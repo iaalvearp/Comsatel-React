@@ -4,19 +4,130 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Comsatel</title>
 	</head>
 	<body>
+		<header class="dashboard-header">
+			<!-- Home icon moved to sidebar -->
+			<div class="user-profile" id="userProfileBtn">
+				<div class="user-info">
+					<img src="../assets/icons/icon-user.svg" alt="User" class="user-icon">
+					<span>Kevin Briones</span>
+				</div>
+				<img src="../assets/icons/icon-arrow-down.svg" alt="More" class="arrow-icon"
+					onclick="toggleUserMenu(this)">
+			</div>
+			<!-- User Menu Overlay -->
+			<div class="user-menu-container" id="userMenu">
+				<div class="user-menu-row">
+					<div class="menu-input-group">
+						<label>Correo:</label>
+						<input type="email" value="correo@mail.com" class="menu-input">
+					</div>
+					<div class="menu-input-group">
+						<label>Nombre de Empresa:</label>
+						<input type="text" value="Nivek" class="menu-input">
+					</div>
+					<a href="change_password_internal.html" class="menu-link">Cambio de clave</a>
+					<button class="menu-link-btn" onclick="logout()">Cerrar Sesión</button>
+				</div>
+			</div>
+		</header>
 		<slot />
 	</body>
+	<footer class="dashboard-footer">
+		<img src="../assets/imgs/logo-white.svg" alt="Comsatel Logo" class="footer-logo">
+		<span class="footer-text">COMSATEL</span>
+	</footer>
 </html>
 
 <style>
+	@font-face {
+		font-family: 'Muli';
+		src: url('../assets/fonts/Muli-Regular.ttf') format('truetype');
+		font-weight: 400;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: 'Muli';
+		src: url('../assets/fonts/Muli-Bold.ttf') format('truetype');
+		font-weight: 700;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: 'Muli';
+		src: url('../assets/fonts/Muli-ExtraLight.ttf') format('truetype');
+		font-weight: 200;
+		font-style: normal;
+	}
+
+	:root {
+		/* Blancos */
+		--blanco-total: #ffffff;
+		--blanco-08: rgba(255, 255, 255, 0.8);
+		--blanco-06: rgba(255, 255, 255, 0.6);
+		--blanco-04: rgba(255, 255, 255, 0.4);
+		--blanco-02: rgba(255, 255, 255, 0.2);
+		--blanco-016: rgba(255, 255, 255, 0.16);
+		--blanco-006: rgba(255, 255, 255, 0.06);
+		--blanco-004: rgba(255, 255, 255, 0.04);
+
+		/* Azules Primarios (22, 33, 62) */
+		--azul-primario-total: rgb(22, 33, 62);
+		--azul-primario-096: rgba(22, 33, 62, 0.96);
+		--azul-primario-08: rgba(22, 33, 62, 0.8);
+		--azul-primario-06: rgba(22, 33, 62, 0.6);
+		--azul-primario-04: rgba(22, 33, 62, 0.4);
+
+		/* Otros Azules */
+		--azul-oscuro: #1c2e4a;
+		--azul-medio: #3a506b;
+		--azul-grisaceo: #2b3d55;
+		--azul-profundo: rgba(0, 15, 35, 1);
+		--azul-acero-10: rgb(68, 96, 117);
+		--azul-noche-10: rgb(10, 25, 47);
+		--azul-noche-04: rgba(10, 25, 47, 0.4);
+
+		/* Cyan */
+		--cyan-neon: #00d2ff;
+		--cyan-neon-06: rgba(0, 210, 255, 0.6);
+		--cyan-neon-02: rgba(0, 210, 255, 0.2);
+		--cyan-hover: #00b8e6;
+		--cyan-neon-00: rgba(0, 210, 255, 0);
+
+		/* Negro/Sombras */
+		--negro-06: rgba(0, 0, 0, 0.6);
+		--negro-04: rgba(0, 0, 0, 0.4);
+		--negro-02: rgba(0, 0, 0, 0.2);
+
+		/* Estados */
+		--estado-activo: #4CAF50;
+		--estado-finalizando: #FF9800;
+		--estado-inactivo: #F44336;
+		--gris-texto: #555;
+
+		/* Variables Legacy (Mapeadas a las nuevas) */
+		--bg-white: var(--blanco-total);
+		--primary-gradient: linear-gradient(180deg, var(--azul-medio) 0%, var(--azul-oscuro) 100%);
+		--accent-cyan: var(--cyan-neon);
+		--text-white: var(--blanco-total);
+		--input-border: var(--blanco-08);
+	}
+
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
 	html,
 	body {
-		margin: 0;
 		width: 100%;
 		height: 100%;
+		background-image: url(assets/imgs/bg.avif);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 	}
 </style>
