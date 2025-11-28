@@ -3,7 +3,7 @@
 ---
 
 <section class="dashboard-content">
-    <main class="dashboard-main">
+    <main class="devices-main">
         <h2 class="section-title">Mis servicios</h2>
 
         <div class="services-grid">
@@ -21,9 +21,11 @@
     .dashboard-content {
         width: 100%;
         padding: 2.5rem 1.25rem;
+        margin-top: 7.5rem;
+        
     }
     
-    .dashboard-main {
+    .devices-main {
         width: 90%;
         margin: 0 auto;
     }
@@ -85,5 +87,17 @@
 
     .service-btn:hover {
         background-color: var(--cyan-hover);
+    }
+
+    @media (width >= 940px) {
+        .dashboard-content {
+            margin: 0;
+            width: 100%;
+            padding: 1.25rem 0;
+        }
+        .devices-main {
+            width: 100%;
+            margin: 0;
+        }
     }
 </style>

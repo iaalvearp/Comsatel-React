@@ -8,9 +8,10 @@
 	</head>
 	<body>
 		<header class="dashboard-header">
-			<picture class="home-icon-container">
-				<img src="../assets/icons/icon-home-filled.svg" class="home-icon">
-			</picture>
+			
+				<a href="/services" class="home-icon-container">
+					<img src="../assets/icons/icon-home-filled.svg" class="home-icon">
+				</a>
 			<!-- Home icon moved to sidebar -->
 			<div class="user-profile" id="userProfileBtn">
 				<div class="user-info">
@@ -176,17 +177,19 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		font-family: Muli;
-		overflow: hidden;
+		overflow-y: scroll;
 	}
 
 	.dashboard-header {
 		display: grid;
+		position: absolute;
 		width: 90%;
-		margin: 2rem auto 0;
+		margin: 2rem 1rem 0;
 		gap: 1rem;
 		grid-template-columns: 3.5rem 1fr;
 		grid-template-rows: 3.5rem 3.5rem;
 		color: var(--blanco-total);
+		z-index: 20;
 	}
 	.home-icon-container {
 		width: 3.5rem;
@@ -197,6 +200,9 @@
 		width: 100%;
     	padding: .75rem;
 		cursor: pointer;
+		background-color: var(--azul-noche-04);
+		backdrop-filter: blur(5px);
+		border-radius: 12px;
 	}
 	.user-profile {
 		display: flex;
@@ -205,6 +211,8 @@
 		border: 1px solid var(--blanco-total);
 		border-radius: 12px;
 		height: 3.5rem;
+		background: var(--azul-noche-04);
+    	backdrop-filter: blur(5px);
 	}
 	.user-info {
 		height: 100%;
@@ -229,7 +237,6 @@
 
 	.user-menu-container {
         display: flex; 
-        
         height: fit-content;
         width: 100%;
         grid-column: 2 / 3;
@@ -246,6 +253,8 @@
         transition: all 0.3s ease-in-out;
         position: relative; 
         z-index: 10;
+		background: var(--azul-noche-04);
+    	backdrop-filter: blur(5px);
     }
 
     .show-menu {
@@ -310,6 +319,14 @@
 		}
 	}
 
+	.dashboard-content {
+		position: relative;
+	}
+	td img {
+		width: 1.75rem;
+		height: auto;
+	}
+
 	/*
 		DESKTOP STYLES
 	*/
@@ -320,16 +337,16 @@
 		}
 
 		.dashboard-header {
-			width: cal(100%-2.5rem);
-			margin: 2rem 2.5rem 0 0;
+			width: calc(100% - 2.75rem);
+			margin: 2rem 0 0 -4.65rem;
+			position: unset;
 		}
 
 		.dashboard-footer {
 			margin-left: -7.5rem;
 		}
-
 		.home-icon {
-			margin-left: -3.5rem;
-		}
+			margin-left: 0;
+		}		
 	}
 </style>
