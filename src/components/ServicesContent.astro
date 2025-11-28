@@ -1,0 +1,89 @@
+---
+
+---
+
+<section class="dashboard-content">
+    <main class="dashboard-main">
+        <h2 class="section-title">Mis servicios</h2>
+
+        <div class="services-grid">
+            <!-- Starlink Service Card -->
+            <article class="service-card">
+                <div class="service-logo">STARLINK</div>
+                <a href="starlink.html" class="service-btn"
+                    style="text-align: center; text-decoration: none; display: block;">Ingresar</a>
+            </article>
+        </div>
+    </main>
+</section>
+
+<style>
+    .dashboard-content {
+        width: 100%;
+        padding: 2.5rem 1.25rem;
+    }
+    
+    .dashboard-main {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        color: var(--blanco-06);
+        font-weight: 600;
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .service-card {
+        background: linear-gradient(180deg, var(--azul-primario-08) 0%, var(--azul-primario-total) 100%);
+        border: 1px solid var(--blanco-08);
+        border-radius: 20px;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 250px;
+        transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .service-logo {
+        color: var(--blanco-total);
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        margin-top: 20px;
+    }
+
+    .service-btn {
+        width: 100%;
+        max-width: 180px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: var(--accent-cyan);
+        color: var(--azul-profundo);
+        border: none;
+        font-size: .875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in;
+    }
+
+    .service-btn:hover {
+        background-color: var(--cyan-hover);
+    }
+</style>
