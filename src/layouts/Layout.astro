@@ -298,6 +298,7 @@
 		padding: 1rem 1.5rem;
 		bottom: 0rem;
 		color: var(--blanco-total);
+		background-color: var(--azul-profundo);
 
 		.footer-logo {
 			height: 100%;
@@ -306,6 +307,29 @@
 			font-size: .75rem;
 			font-weight: 600;
 			letter-spacing: 1px;
+		}
+	}
+
+	/*
+		DESKTOP STYLES
+	*/
+
+	@media (width >= 940px) {
+		body {
+			padding-left: 7.5rem;
+		}
+
+		.dashboard-header {
+			width: cal(100%-2.5rem);
+			margin: 2rem 2.5rem 0 0;
+		}
+
+		.dashboard-footer {
+			margin-left: -7.5rem;
+		}
+
+		.home-icon {
+			margin-left: -3.5rem;
 		}
 	}
 </style>
