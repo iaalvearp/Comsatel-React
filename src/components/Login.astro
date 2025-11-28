@@ -1,5 +1,5 @@
 ---
-
+  
 ---
 
 <main class="login-wrapper">
@@ -10,23 +10,77 @@
     <section class="login-card">
         <h1 class="welcome-title">Bienvenidos!</h1>
 
-        <form class="login-form" action="pages/dashboard.html">
+        <form id="loginForm" class="login-form" action="pages/dashboard.html">
             <div class="input-group">
-                <input type="text" id="user" placeholder=" " required>
+                <input type="text" id="user" name="user" placeholder=" " required>
                 <label for="user">Usuario/Correo</label>
             </div>
 
             <div class="input-group">
-                <input type="password" id="password" placeholder=" " required>
+                <input type="password" id="password" name="password" placeholder=" " required>
                 <label for="password">Contraseña</label>
             </div>
 
             <button type="submit" class="btn-primary">Ingresar</button>
         </form>
 
-        <a href="pages/recover_password" class="forgot-password">¡Olvidé mi contraseña!</a>
+        <a href="/recover_password" class="forgot-password">¡Olvidé mi contraseña!</a>
     </section>
 </main>
+
+<script>
+    // 1. Seleccionamos el formulario
+  const form = document.getElementById('loginForm') as HTMLFormElement;
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      // IMPORTANTE: Esto evita que la página se recargue sola
+      e.preventDefault();
+
+      // Aquí capturamos los datos que escribió el usuario
+      const formData = new FormData(form);
+      const datos = Object.fromEntries(formData);
+      
+      console.log('Intentando loguear con:', datos);
+
+      // Enrutamiento de mentira
+      
+      // Simulamos una pequeña espera para que parezca real (opcional)
+      await new Promise(r => setTimeout(r, 1000));
+
+      // Guardamos una "marca" falsa en el navegador para decir que estamos logueados
+      // Esto te servirá para probar la página /services después
+      localStorage.setItem('usuarioLogueado', 'true');
+
+      // Redirección forzada a la página de servicios
+      window.location.href = '/services';
+
+
+      // Conectar con una API real (descomentar y ajustar)
+      /* try {
+        const response = await fetch('https://tu-api.com/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(datos)
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          // Guardar el token real
+          localStorage.setItem('token', data.token); 
+          window.location.href = '/services';
+        } else {
+          alert('Usuario o contraseña incorrectos');
+        }
+      } catch (error) {
+        console.error('Error de red:', error);
+      }
+      */
+    })
+  }
+</script>
 
 <style>
     /* Contenedor principal simulando móvil */
