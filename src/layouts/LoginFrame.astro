@@ -1,73 +1,73 @@
 ---
-
+import "../styles/global.css";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>Comsatel</title>
-	</head>
-	<body>
-        <slot />
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- global styles imported as ESM in the layout frontmatter -->
+    <title>Comsatel</title>
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 
 <style>
-    @font-face {
-        font-family: 'Muli';
-        src: url('../assets/fonts/Muli-Regular.ttf') format('truetype');
-        font-weight: 400;
-        font-style: normal;
-    }
+  @font-face {
+    font-family: "Muli";
+    src: url("../assets/fonts/Muli-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+  }
 
-    @font-face {
-        font-family: 'Muli';
-        src: url('../assets/fonts/Muli-Bold.ttf') format('truetype');
-        font-weight: 700;
-        font-style: normal;
-    }
+  @font-face {
+    font-family: "Muli";
+    src: url("../assets/fonts/Muli-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+  }
 
-    @font-face {
-        font-family: 'Muli';
-        src: url('../assets/fonts/Muli-ExtraLight.ttf') format('truetype');
-        font-weight: 200;
-        font-style: normal;
-    }
+  @font-face {
+    font-family: "Muli";
+    src: url("../assets/fonts/Muli-ExtraLight.ttf") format("truetype");
+    font-weight: 200;
+    font-style: normal;
+  }
 
-    :root {
-        --azul-acero-10: rgb(68, 96, 117);
-        --azul-primario-096: rgba(22, 33, 62, 0.96);
-        --negro-04: rgba(0, 0, 0, 0.4);
-        --cyan-neon: #00d2ff;
-        --accent-cyan: var(--cyan-neon);
-        --input-border: var(--blanco-08);
-        --azul-grisaceo: #2b3d55;
-        --blanco-08: rgba(255, 255, 255, 0.8);
-        --cyan-hover: #00b8e6;
-		--blanco-total: #ffffff;
-        --bg-white: var(--blanco-total);
-    }
+  :root {
+    --azul-acero-10: rgb(68, 96, 117);
+    --azul-primario-096: rgba(22, 33, 62, 0.96);
+    --negro-04: rgba(0, 0, 0, 0.4);
+    --cyan-neon: #00d2ff;
+    --accent-cyan: var(--cyan-neon);
+    --input-border: var(--blanco-08);
+    --azul-grisaceo: #2b3d55;
+    --blanco-08: rgba(255, 255, 255, 0.8);
+    --cyan-hover: #00b8e6;
+    --blanco-total: #ffffff;
+    --bg-white: var(--blanco-total);
+  }
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-	html,
-	body {
-		width: 100%;
-		height: 100%;
-		background-image: url(assets/imgs/bg.avif);
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
-        font-family: Muli;
-        display: flex;
-        justify-self: center;
-        align-items: center;
-	}
-    
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    background-image: url(assets/imgs/bg.avif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Muli;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+  }
 </style>

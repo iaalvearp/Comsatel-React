@@ -1,28 +1,32 @@
 ---
-
+/* Devices.astro */
 ---
 
 <section class="dashboard-content">
-    <a href="dashboard.html" class="back-link">
-        <img src="../assets/icons/icon-arrow-left.svg" alt="Back" class="back-icon">
-        Regresar
-    </a>
     <main class="dashboard-main starlink-main">
         <div class="starlink-nav">
-            <!-- Empty spacer to push alerts to right if needed, or just flex alignment -->
             <div class="alerts-summary">
                 <div class="summary-text">
-                    Suscripciones: <span class="status-active">7 Activas</span> <span class="status-ending">1
-                        Finalizando</span> <span class="status-inactive">1 Inactiva</span>
+                    Suscripciones: <span class="status-active">7 Activas</span>
+                    <span class="status-ending">1 Finalizando</span>
+                    <span class="status-inactive">1 Inactiva</span>
                 </div>
                 <div class="alerts-count">
-                    Alertas Activas <img src="../assets/icons/Frame.svg" alt="Alert" class="alert-icon"> 3
+                    Alertas Activas
+                    <img
+                        src="../assets/icons/Frame.svg"
+                        alt="Alert"
+                        class="alert-icon"
+                    />
+                    3
                 </div>
             </div>
         </div>
 
         <div class="starlink-header">
-            <h2 class="section-title" style="margin-bottom: 0;">Suscripciones Starlink</h2>
+            <h2 class="section-title">
+                Suscripciones <strong>Starlink</strong>
+            </h2>
             <span class="total-subs">8 Suscripciones</span>
         </div>
 
@@ -39,309 +43,465 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Nombre de la suscripción</td>
-                        <td>SL-2152144-76226-67</td>
-                        <td>2 <img src="../assets/icons/Frame.svg" alt="Alert" class="alert-icon-small"></td>
+                        <td
+                            ><p class="subscription-name">
+                                Nombre de la suscripción
+                            </p></td
+                        >
+                        <td
+                            ><p class="subscription-line">
+                                SL-2152144-76226-67
+                            </p></td
+                        >
                         <td>
-                            <div class="status-badge active">Activa <span class="dot"></span></div>
-                        </td>
-                        <td><img src="../assets/icons/icon-circle-arrow-right.svg" alt="Go" class="action-icon">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Nombre de la suscripción</td>
-                        <td>SL-2152144-76226-67</td>
-                        <td>0 <img src="../assets/icons/Frame.svg" alt="Alert" class="alert-icon-small"></td>
-                        <td>
-                            <div class="status-badge active">Activa <span class="dot"></span></div>
+                            <p class="alerts-count">
+                                2 <img
+                                    src="../assets/icons/Frame.svg"
+                                    alt="Alert"
+                                    class="alert-icon-small"
+                                />
+                            </p>
                         </td>
                         <td>
-                            <a href="starlink_detail.html">
-                                <img src="../assets/icons/icon-circle-arrow-right.svg" alt="Go"
-                                    class="action-icon">
+                            <div class="status-badge active-badge">
+                                Activa <span class="dot active"></span>
+                            </div>
+                        </td>
+                        <td class="action-cell">
+                            <a href="/charts_page">
+                                <img
+                                    src="../assets/icons/icon-circle-arrow-right.svg"
+                                    alt="Go"
+                                    class="action-icon"
+                                />
                             </a>
                         </td>
                     </tr>
+
                     <tr>
-                        <td>Nombre de la suscripción</td>
-                        <td>SL-2152144-76226-67</td>
-                        <td>0 <img src="../assets/icons/Frame.svg" alt="Alert" class="alert-icon-small"></td>
+                        <td
+                            ><p class="subscription-name">
+                                Nombre de la suscripción
+                            </p></td
+                        >
+                        <td
+                            ><p class="subscription-line">
+                                SL-2152144-76226-67
+                            </p></td
+                        >
                         <td>
-                            <div class="status-badge ending">Finalizando <span class="dot"></span></div>
+                            <p class="alerts-count">
+                                0 <img
+                                    src="../assets/icons/Frame.svg"
+                                    alt="Alert"
+                                    class="alert-icon-small"
+                                />
+                            </p>
                         </td>
-                        <td><img src="../assets/icons/icon-circle-arrow-right.svg" alt="Go" class="action-icon">
+                        <td>
+                            <div class="status-badge active-badge">
+                                Activa <span class="dot active"></span>
+                            </div>
+                        </td>
+                        <td class="action-cell">
+                            <a href="/charts_page">
+                                <img
+                                    src="../assets/icons/icon-circle-arrow-right.svg"
+                                    alt="Go"
+                                    class="action-icon"
+                                />
+                            </a>
                         </td>
                     </tr>
+
                     <tr>
-                        <td>Nombre de la suscripción</td>
-                        <td>SL-2152144-76226-67</td>
-                        <td>1 <img src="../assets/icons/Frame.svg" alt="Alert" class="alert-icon-small"></td>
+                        <td
+                            ><p class="subscription-name">
+                                Nombre de la suscripción
+                            </p></td
+                        >
+                        <td
+                            ><p class="subscription-line">
+                                SL-2152144-76226-67
+                            </p></td
+                        >
                         <td>
-                            <div class="status-badge active">Activa <span class="dot"></span></div>
+                            <p class="alerts-count">
+                                0 <img
+                                    src="../assets/icons/Frame.svg"
+                                    alt="Alert"
+                                    class="alert-icon-small"
+                                />
+                            </p>
+                            <td>
+                                <div class="status-badge ending-badge">
+                                    Finalizando <span class="dot ending"></span>
+                                </div>
+                            </td>
+                            <td class="action-cell">
+                                <a href="/charts_page">
+                                    <img
+                                        src="../assets/icons/icon-circle-arrow-right.svg"
+                                        alt="Go"
+                                        class="action-icon"
+                                    />
+                                </a>
+                            </td>
                         </td>
-                        <td><img src="../assets/icons/icon-circle-arrow-right.svg" alt="Go" class="action-icon">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Nombre de la suscripción</td>
-                        <td>SL-2152144-76226-67</td>
-                        <td>0 <img src="../assets/icons/Frame.svg" alt="Alert" class="alert-icon-small"></td>
-                        <td>
-                            <div class="status-badge inactive">Inactivo <span class="dot"></span></div>
-                        </td>
-                        <td><img src="../assets/icons/icon-circle-arrow-right.svg" alt="Go" class="action-icon">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Nombre de la suscripción</td>
-                        <td>SL-2152144-76226-67</td>
-                        <td>0 <img src="../assets/icons/Frame.svg" alt="Alert" class="alert-icon-small"></td>
-                        <td>
-                            <div class="status-badge active">Activa <span class="dot"></span></div>
-                        </td>
-                        <td><img src="../assets/icons/icon-circle-arrow-right.svg" alt="Go" class="action-icon">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Nombre de la suscripción</td>
-                        <td>SL-2152144-76226-67</td>
-                        <td>0 <img src="../assets/icons/Frame.svg" alt="Alert" class="alert-icon-small"></td>
-                        <td>
-                            <div class="status-badge active">Activa <span class="dot"></span></div>
-                        </td>
-                        <td><img src="../assets/icons/icon-circle-arrow-right.svg" alt="Go" class="action-icon">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Nombre de la suscripción</td>
-                        <td>SL-2152144-76226-67</td>
-                        <td>0 <img src="../assets/icons/Frame.svg" alt="Alert" class="alert-icon-small"></td>
-                        <td>
-                            <div class="status-badge active">Activa <span class="dot"></span></div>
-                        </td>
-                        <td><img src="../assets/icons/icon-circle-arrow-right.svg" alt="Go" class="action-icon">
-                        </td>
+
+                        <tr>
+                            <td
+                                ><p class="subscription-name">
+                                    Nombre de la suscripción
+                                </p></td
+                            >
+                            <td
+                                ><p class="subscription-line">
+                                    SL-2152144-76226-67
+                                </p></td
+                            >
+                            <td>
+                                <p class="alerts-count">
+                                    1 <img
+                                        src="../assets/icons/Frame.svg"
+                                        alt="Alert"
+                                        class="alert-icon-small"
+                                    />
+                                </p>
+                            </td>
+                            <td>
+                                <div class="status-badge active-badge">
+                                    Activa <span class="dot active"></span>
+                                </div>
+                            </td>
+                            <td class="action-cell">
+                                <a href="/charts_page">
+                                    <img
+                                        src="../assets/icons/icon-circle-arrow-right.svg"
+                                        alt="Go"
+                                        class="action-icon"
+                                    />
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td
+                                ><p class="subscription-name">
+                                    Nombre de la suscripción
+                                </p></td
+                            >
+                            <td
+                                ><p class="subscription-line">
+                                    SL-2152144-76226-67
+                                </p></td
+                            >
+                            <td>
+                                <p class="alerts-count">
+                                    0 <img
+                                        src="../assets/icons/Frame.svg"
+                                        alt="Alert"
+                                        class="alert-icon-small"
+                                    />
+                                </p>
+                            </td>
+                            <td>
+                                <div class="status-badge inactive-badge">
+                                    Inactivo <span class="dot inactive"></span>
+                                </div>
+                            </td>
+                            <td class="action-cell">
+                                <a href="/charts_page">
+                                    <img
+                                        src="../assets/icons/icon-circle-arrow-right.svg"
+                                        alt="Go"
+                                        class="action-icon"
+                                    />
+                                </a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td
+                                ><p class="subscription-name">
+                                    Nombre de la suscripción
+                                </p></td
+                            >
+                            <td
+                                ><p class="subscription-line">
+                                    SL-2152144-76226-67
+                                </p></td
+                            >
+                            <td>
+                                <p class="alerts-count">
+                                    0 <img
+                                        src="../assets/icons/Frame.svg"
+                                        alt="Alert"
+                                        class="alert-icon-small"
+                                    />
+                                </p>
+                            </td>
+                            <td>
+                                <div class="status-badge active-badge">
+                                    Activa <span class="dot active"></span>
+                                </div>
+                            </td>
+                            <td class="action-cell">
+                                <a href="/charts_page">
+                                    <img
+                                        src="../assets/icons/icon-circle-arrow-right.svg"
+                                        alt="Go"
+                                        class="action-icon"
+                                    />
+                                </a>
+                            </td>
+                        </tr>
                     </tr>
                 </tbody>
             </table>
         </div>
     </main>
-</section>
 
-<script>
-
-</script>
-
-<style>
-    /* Dashboard Layout Grid */
-    .dashboard-content {
-        display: flex;
-        width: 90%;
-        min-height: 100%;
-        overflow-x: scroll;
-        margin: 10rem auto 5rem auto;
-    }
-
-    .back-link {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: var(--blanco-total);
-        text-decoration: none;
-        font-size: 0.9rem;
-        opacity: 0.8;
-        transition: opacity 0.3s;
-        /* Rotate text for vertical sidebar if desired, or keep horizontal */
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-        transform: rotate(180deg);
-        margin-top: 20px;
-        display: none;
-        /* Hiding sidebar back link for now, reusing top nav back link logic if preferred, but user asked for sidebar space. Let's keep it simple first. */
-    }
-
-    /* Actually, let's keep the back link in the sidebar simple and horizontal if space permits, or just an icon.
-    But the design shows "Regresar" text. Let's put the back link in the sidebar properly.
-    */
-    .dashboard-sidebar .back-link {
-        display: flex;
-        writing-mode: horizontal-tb;
-        transform: none;
-        flex-direction: row;
-        margin-top: 0;
-        color: var(--blanco-total);
-        font-size: 0.9rem;
-        align-items: center;
-        gap: 8px;
-        padding-left: 40px;
-        /* Align with home icon (header has 40px padding) */
-        width: 100%;
-        justify-content: flex-start;
-    }
-
-    .back-link:hover {
-        opacity: 1;
-    }
-
-    .back-icon {
-        width: 20px;
-        height: 20px;
-    }
-    .starlink-nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 0px;
-        width: 100%;
-    }
-
-    .alerts-summary {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: var(--azul-primario-096);
-        border: 1px solid var(--blanco-06);
-        border-radius: 12px;
-        padding: 16px 24px;
-        width: 100%;
-        margin-left: 0;
-    }
-
-    .summary-text {
-        color: var(--blanco-total);
-        font-size: 0.9rem;
-    }
-
-    .status-active {
-        color: var(--estado-activo);
-        margin-left: 5px;
-    }
-
-    .status-ending {
-        color: var(--estado-finalizando);
-        margin-left: 5px;
-    }
-
-    .status-inactive {
-        color: var(--estado-inactivo);
-        margin-left: 5px;
-    }
-
-    .alerts-count {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: var(--blanco-total);
-        font-size: 0.9rem;
-    }
-
-    .alert-icon {
-        width: 1.25rem;
-        height: 1.25rem;
-    }
-
-    .starlink-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin: 1rem 0 1rem;
-    }
-
-    .section-title {
-        color: var(--blanco-06);
-        font-size: 0.75rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        font-weight: 600;
-        margin-bottom: 0px;
-        display: block;
-    }
-
-    .total-subs {
-        color: var(--blanco-total);
-        font-weight: 600;
-        font-size: 1.1rem;
-    }
-
-    .subscriptions-table-container {
-        overflow: auto;
-    }
-
-    .subscriptions-table {
-        width: 100%;
-        border-collapse: separate;
-        /* un poco más de separación vertical para evitar que los bordes y sombras "recorten" el contenido */
-        border-spacing: 0 14px;
-    }
-
-    .subscriptions-table th {
-        text-align: left;
-        color: var(--blanco-08);
-        font-size: 0.8rem;
-        letter-spacing: 1px;
-        padding: 10px 20px;
-        text-transform: uppercase;
-    }
-
-    .subscriptions-table td {
-        background: var(--azul-primario-06);
-        /* más espaciado vertical para que iconos y texto no se toquen con las líneas de separación */
-        padding: 18px 20px;
-        color: var(--blanco-total);
-        font-size: 0.8rem;
-        /* dejamos la separación visual pero no permitimos que el contenido se "corte" */
-        border-top: 1px solid var(--blanco-02);
-        border-bottom: 1px solid var(--blanco-02);
-        text-align: left;
-        line-height: 1.2;
-        overflow: visible;
-    }
-
-    .subscriptions-table td:first-child {
-        border-top-left-radius: 18px;
-        border-bottom-left-radius: 18px;
-        border-left: 1px solid var(--blanco-02);
-    }
-
-    /* que la última columna también tenga esquinas redondeadas y borde derecho coherente */
-    .subscriptions-table td:last-child {
-        border-top-right-radius: 18px;
-        border-bottom-right-radius: 18px;
-        border-right: 1px solid var(--blanco-02);
-    }
-
-    /* asegurar que los iconos dentro de las celdas se alineen verticalmente y no queden cortados */
-    .subscriptions-table img.action-icon {
-        display: inline-block;
-        vertical-align: middle;
-        width: 36px;
-        height: 36px;
-    }
-
-    /* badges y puntos centrados verticalmente */
-    .status-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .status-badge .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        display: inline-block;
-    }
-
-    @media (width >= 940px) {
+    <style>
+        /* LAYOUT PRINCIPAL 
+     Ajustado para trabajar con el Layout.astro que ya provee padding-left en body
+  */
         .dashboard-content {
-            width: calc(100% - 7.5rem);
-            overflow-x: hidden;
-            margin: 1rem 7rem 5rem 0;
-            position: relative;
+            /* Eliminamos margin-left y width calc porque el body del Layout ya tiene padding */
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px 20px 20px; /* Padding lateral y bottom, top 0 porque el margin del header lo empuja */
+            margin-top: 11rem; /* Espacio para el header fixed del Layout */
         }
+
         .starlink-main {
-			width: 100%;
-		}
-    }
- 
-</style>
+            width: 100%;
+            padding-top: 0;
+        }
+
+        /* BARRA DE RESUMEN (Summary)
+  */
+        .starlink-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0px;
+            width: 100%;
+        }
+
+        .alerts-summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--azul-primario-096);
+            border: 1px solid var(--blanco-06);
+            border-radius: 12px;
+            padding: 16px 24px;
+            width: 100%;
+        }
+
+        .summary-text {
+            color: var(--blanco-total);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Colores de texto en el resumen */
+        .status-active {
+            color: var(--estado-activo);
+            margin-left: 5px;
+        }
+        .status-ending {
+            color: var(--estado-finalizando);
+            margin-left: 5px;
+        }
+        .status-inactive {
+            color: var(--estado-inactivo);
+            margin-left: 5px;
+        }
+
+        /* Contador de alertas a la derecha */
+        .alerts-count {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--blanco-total);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .alert-icon {
+            width: 1.25rem; /* Ajustado para mejor visibilidad */
+            height: 1.25rem;
+        }
+
+        /* CABECERA DE SECCIÓN
+  */
+        .starlink-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin: 2rem 0 1rem; /* Un poco más de aire arriba */
+        }
+
+        .section-title {
+            color: var(--blanco-06);
+            font-size: 0.9rem; /* Un poco más grande para legibilidad */
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 400; /* Muli light */
+            margin-bottom: 0; /* Corrección solicitada */
+        }
+
+        .section-title strong {
+            color: var(--blanco-total);
+            font-weight: 700;
+        }
+
+        .total-subs {
+            color: var(--blanco-total);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* TABLA DE SUSCRIPCIONES
+  */
+        .subscriptions-table-container {
+            overflow-x: auto;
+            padding-bottom: 20px; /* Espacio para el scroll si aparece */
+        }
+
+        .subscriptions-table {
+            width: 100%;
+            border-collapse: separate; /* Clave para el border-radius en filas */
+            border-spacing: 0 10px; /* Espacio entre filas */
+        }
+
+        .subscriptions-table th {
+            text-align: left;
+            color: var(--blanco-08);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .subscriptions-table td {
+            background: var(--azul-primario-06);
+            padding: 15px 20px;
+            color: var(--blanco-total);
+            font-size: 0.9rem;
+
+            /* Bordes superior e inferior para todas las celdas */
+            border-top: 1px solid var(--blanco-02);
+            border-bottom: 1px solid var(--blanco-02);
+
+            text-align: left;
+            vertical-align: middle;
+        }
+        td p {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Icono de alerta pequeño dentro de la tabla */
+        .alert-icon-small {
+            width: 1rem;
+            height: 1rem;
+            vertical-align: text-bottom;
+            margin-left: 5px;
+        }
+
+        /* BORDES REDONDEADOS (Efecto Píldora)
+  */
+        .subscriptions-table td:first-child {
+            border-top-left-radius: 18px;
+            border-bottom-left-radius: 18px;
+            border-left: 1px solid var(--blanco-02);
+        }
+
+        .subscriptions-table td:last-child {
+            border-top-right-radius: 18px;
+            border-bottom-right-radius: 18px;
+            border-right: 1px solid var(--blanco-02);
+            text-align: right; /* Alinear flecha a la derecha */
+            width: 80px; /* Ancho fijo para la columna de acción */
+        }
+
+        .action-icon {
+            width: 32px;
+            height: 32px;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .action-icon:hover {
+            transform: translateX(3px);
+        }
+
+        /* BADGES (ESTADO)
+     Diseño tipo píldora con borde
+  */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            border: 1px solid var(--blanco-02);
+            font-size: 0.8rem;
+            font-weight: 600;
+            min-width: 120px;
+            width: 100%;
+            max-width: 140px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .dot {
+            width: 18px;
+            height: 6px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        /* Colores Específicos para Badges */
+        .status-badge.active-badge {
+            border-color: var(--blanco-04);
+        }
+        .dot.active {
+            background-color: var(--estado-activo);
+            box-shadow: 0 0 8px var(--estado-activo);
+        }
+
+        .status-badge.ending-badge {
+            border-color: var(--blanco-04);
+        }
+        .dot.ending {
+            background-color: var(--estado-finalizando);
+            box-shadow: 0 0 8px var(--estado-finalizando);
+        }
+
+        .status-badge.inactive-badge {
+            border-color: var(--blanco-04);
+        }
+        .dot.inactive {
+            background-color: var(--estado-inactivo);
+            box-shadow: 0 0 8px var(--estado-inactivo);
+        }
+
+        @media (width >= 940px) {
+            .dashboard-content {
+                margin: 0;
+                width: calc(100% - 7.5rem);
+                padding: 0;
+                margin-top: -3rem;
+                margin-bottom: 5rem;
+                margin-left: 1rem;
+            }
+        }
+    </style>
+</section>

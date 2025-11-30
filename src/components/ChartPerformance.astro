@@ -1,0 +1,67 @@
+---
+// Aquí podrías hacer fetch de datos reales desde el servidor si quisieras,
+// pero como el gráfico es interactivo (JS), lo dejaremos en el cliente.
+---
+
+<main>
+    <grafico-rendimiento id="mi-grafico"></grafico-rendimiento>
+</main>
+<style>
+    main {
+        width: calc(100% - 7.5rem);
+    }
+    .tarjeta-dashboard {
+        width: 100%;
+        height: 300px;
+        padding: 20px;
+        background: linear-gradient(180deg, #162c46 0%, #0f1f33 100%);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        color: white;
+    }
+
+    h3 {
+        margin: 0 0 5px 0;
+        font-weight: 400;
+        font-size: 14px;
+        opacity: 0.7;
+    }
+    .stats {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+</style>
+
+<script>
+    // 1. Importamos la definición del componente
+    import "../web-components/GraficoRendimiento.js";
+
+    // 2. Lógica para generar datos y pasárselos al componente
+    const componente = document.getElementById("mi-grafico");
+
+    // Generador de datos (Exactamente tu función original)
+    function generarDatosSimulados() {
+        let datos = [];
+        let tiempoActual = new Date("2023-11-26T10:50:00").getTime() / 1000;
+        let valor = 30;
+
+        for (let i = 0; i < 150; i++) {
+            const cambio = (Math.random() - 0.5) * 20;
+            valor += cambio;
+            if (valor < 5) valor = 5;
+            if (valor > 100) valor = 100;
+
+            datos.push({ time: tiempoActual, value: valor });
+            tiempoActual += 60;
+        }
+        return datos;
+    }
+
+    // Esperamos a que el componente esté disponible y luego establecemos los datos
+    if (componente) {
+        customElements.whenDefined("grafico-rendimiento").then(() => {
+            (componente as any).establecerDatos(generarDatosSimulados());
+        });
+    }
+</script>

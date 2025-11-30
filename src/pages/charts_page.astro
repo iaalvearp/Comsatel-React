@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SubscriptionSection from "../components/starlink/Subscription";
+import DeviceSection from "../components/starlink/Device";
+// global styles loaded via Layout
+---
+
+<Layout
+  goBackTo="/starlink"
+  title="Starlink Dashboard"
+  description="Dashboard de Starlink"
+>
+  <main class="w-[90%] mt-44 mb-24 mx-auto">
+    <SubscriptionSection client:load />
+
+    <DeviceSection client:load title="Dispositivo 1" deviceId="KITP3340" />
+
+    <DeviceSection client:load title="Dispositivo 2" deviceId="KITP2120" />
+  </main>
+</Layout>
+
+<style>
+  @media (width >= 940px) {
+    main {
+      width: calc(100% - 7.5rem);
+      margin: 1rem 0 6rem 1rem;
+    }
+  }
+</style>
