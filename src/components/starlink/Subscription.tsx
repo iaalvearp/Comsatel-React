@@ -4,11 +4,27 @@ import UsageBarChart from "./UsageBarChart";
 export default function SubscriptionSection() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Estado de notificaciones (del paso anterior)
+  // 1. ESTADO ACTUALIZADO CON DATOS PARA EL MODAL
   const [notifications, setNotifications] = useState([
-    { id: 1, text: "Notificación 001 - 000" },
-    { id: 2, text: "Notificación 002 - 000 - 000" },
+    {
+      id: 1,
+      text: "Notificación 001 - 000",
+      modalTitle:
+        "Conexión por cable débil. La velocidad de internet puede ser más lenta de lo esperado.",
+      modalText:
+        "La autonegociación del enlace Ethernet se estableció en 100 MB/s. La autonegociación del dispositivo Starlink debe establecerse en 1000 MB/s. Puede haber un problema con el cable o la conexión.",
+    },
+    {
+      id: 2,
+      text: "Notificación 002 - 000 - 000",
+      modalTitle: "Actualización disponible",
+      modalText:
+        "Hay una nueva versión de firmware disponible para su dispositivo. Se recomienda instalarla para mejorar la estabilidad de la conexión.",
+    },
   ]);
+
+  // Estado para controlar qué notificación se está viendo
+  const [selectedNote, setSelectedNote] = useState<any>(null);
 
   const removeNotification = (id: number) => {
     setNotifications((prev) => prev.filter((n) => n.id !== id));
@@ -85,7 +101,7 @@ export default function SubscriptionSection() {
                 Notificaciones
               </label>
 
-              {/* INICIO DEL CAMBIO DINÁMICO */}
+              {/* LISTA DE NOTIFICACIONES */}
               <div className="flex flex-col items-center sm:items-end gap-1">
                 {notifications.length > 0 ? (
                   notifications.map((note) => (
@@ -93,7 +109,14 @@ export default function SubscriptionSection() {
                       key={note.id}
                       className="text-xs flex justify-center min-[940px]:justify-end gap-2 items-center animate-in fade-in zoom-in duration-300"
                     >
-                      <a href="#">{note.text}</a>
+                      {/* CAMBIO: Ahora es un botón/span que abre el modal */}
+                      <span
+                        onClick={() => setSelectedNote(note)}
+                        className="cursor-pointer hover:text-[var(--cyan-neon)] transition-colors underline decoration-dotted underline-offset-4"
+                      >
+                        {note.text}
+                      </span>
+
                       <img
                         className="cursor-pointer font-semibold h-3 hover:scale-110 transition-transform"
                         src="/icons/icon-red-x.svg"
@@ -103,7 +126,7 @@ export default function SubscriptionSection() {
                     </div>
                   ))
                 ) : (
-                  <span className="text-xs text-[var(--blanco-08)] italic">
+                  <span className="text-[10px] text-[var(--blanco-04)] italic">
                     Sin notificaciones nuevas
                   </span>
                 )}
@@ -200,39 +223,6 @@ export default function SubscriptionSection() {
               </div>
             </div>
 
-            <div className="device-info-grid">
-              <div className="device-info-item">
-                <label>STARLINK</label>
-                <div className="value">0100000000-0000000-0008398 HYB</div>
-              </div>
-              <div className="device-info-item">
-                <label>NÚMERO DE SERIE</label>
-                <div className="value">HPUNE0000000323443</div>
-              </div>
-              <div className="device-info-item">
-                <label>VERSIÓN DEL SOFTWARE</label>
-                <div className="value">2023.10.02.mr64789</div>
-              </div>
-              <div className="device-info-item">
-                <label>NÚMERO DE KIT</label>
-                <div className="value">KITP00222979</div>
-              </div>
-              <div className="device-info-item">
-                <label>TIEMPO DE ACTIVIDAD</label>
-                <div className="value">8 hours 20 minutes 37 seconds</div>
-              </div>
-              <div className="device-info-item">
-                <label>ÚLTIMA ACTUALIZACIÓN</label>
-                <div className="value">10/14/2025, 11:07:57 AM</div>
-              </div>
-              <div className="device-info-item full-width">
-                <label>IP PÚBLICAS</label>
-                <div className="value">149.19.163.252</div>
-                <div className="value">2803:9810:5367:2800::/56</div>
-                <div className="value">2803:9810:5367:2800::/54</div>
-              </div>
-            </div>
-
             {/* Usamos el NUEVO componente aquí */}
             <UsageBarChart
               data={chartData}
@@ -277,6 +267,42 @@ export default function SubscriptionSection() {
                   Ilimitada
                 </span>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 3. MODAL DE NOTIFICACIÓN (CORREGIDO: DENTRO DEL RETURN) */}
+      {selectedNote && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[var(--blanco-004)] backdrop-blur-sm animate-in fade-in duration-300">
+          {/* Contenedor del Modal */}
+          <div className="w-full max-w-lg bg-[var(--azul-primario-08)] backdrop-blur-sm border border-[var(--blanco-04)] rounded-[12px] shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
+            <div className="p-6 space-y-4">
+              {/* Título */}
+              <h3 className="text-lg font-semibold text-[var(--blanco-total)] leading-tight">
+                {selectedNote.modalTitle}
+              </h3>
+
+              {/* Texto */}
+              <p className="text-sm text-[var(--blanco-08)] leading-relaxed">
+                {selectedNote.modalText}
+              </p>
+            </div>
+
+            {/* Footer con Botones */}
+            <div className="flex justify-end gap-3 p-4 bg-[var(--azul-noche-04)]/50 border-t border-[var(--blanco-02)]">
+              <button
+                onClick={() => setSelectedNote(null)}
+                className="px-4 py-2 text-sm font-medium text-[var(--blanco-total)] border border-[var(--blanco-02)] rounded-lg hover:bg-[var(--blanco-006)] transition-colors"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={() => setSelectedNote(null)}
+                className="px-4 py-2 text-sm font-medium text-black bg-white rounded-lg hover:bg-gray-200 transition-colors"
+              >
+                Aceptar
+              </button>
             </div>
           </div>
         </div>

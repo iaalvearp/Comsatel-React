@@ -21,23 +21,23 @@ import "../styles/global.css";
   <body>
     <header class="dashboard-header">
       <a href="/services" class="home-icon-container">
-        <img src="../icons/icon-home-filled.svg" class="home-icon" />
+        <img src="/icons/icon-home-filled.svg" class="home-icon" />
       </a>
       <!-- Home icon moved to sidebar -->
       <div class="user-profile" id="userProfileBtn">
         <div class="user-info">
-          <img src="../icons/icon-user.svg" alt="User" class="user-icon" />
+          <img src="/icons/icon-user.svg" alt="User" class="user-icon" />
           <span>Kevin Briones</span>
         </div>
         <img
-          src="../icons/icon-arrow-down.svg"
+          src="/icons/icon-arrow-down.svg"
           alt="More"
           class="arrow-icon"
           id="arrowIcon"
         />
       </div>
       <a href={goBackTo} class="back-link-container">
-        <img src="../icons/icon-arrow-left.svg" alt="Back" class="back-icon" />
+        <img src="/icons/icon-arrow-left.svg" alt="Back" class="back-icon" />
         Regresar
       </a>
       <!-- User Menu Overlay -->
@@ -45,7 +45,7 @@ import "../styles/global.css";
         <div class="user-menu-row">
           <p>Correo: <span id="company-email">correo@mail.com</span></p>
           <p>Nombre de Empresa: <span id="company-name">Nivek</span></p>
-          <a href="change_password_internal.html" class="menu-link"
+          <a href="/change_password_internal" class="menu-link"
             >Cambio de clave</a
           >
           <button class="menu-link-btn" id="logoutBtn">Cerrar Sesión</button>
@@ -55,7 +55,7 @@ import "../styles/global.css";
     <slot />
   </body>
   <footer class="dashboard-footer">
-    <img src="../imgs/logo-white.svg" alt="Comsatel Logo" class="footer-logo" />
+    <img src="/imgs/logo-white.svg" alt="Comsatel Logo" class="footer-logo" />
     <span class="footer-text">COMSATEL</span>
   </footer>
 </html>
@@ -235,6 +235,11 @@ import "../styles/global.css";
     backdrop-filter: blur(5px);
     border-radius: 12px;
   }
+  .home-icon:hover {
+    background: var(--azul-primario-06);
+    color: var(--blanco-total);
+    border: 1px solid var(--blanco-04);
+  }
   .user-profile {
     display: flex;
     justify-content: space-between;
@@ -313,6 +318,8 @@ import "../styles/global.css";
   .back-link-container {
     display: flex;
     align-items: center;
+    width: 6rem;
+    height: fit-content;
     background: var(--azul-primario-04);
     backdrop-filter: blur(5px);
     color: var(--blanco-08);
@@ -324,12 +331,19 @@ import "../styles/global.css";
     gap: 0.25rem;
     font-weight: 600;
     border-radius: 8px;
-    padding: 0.5rem 0.75rem 0.5rem 0.25rem;
+    padding: 0.5rem;
+    margin-left: -1rem;
 
     img {
       width: 1.5rem;
       margin: 0;
     }
+  }
+
+  .back-link-container:hover {
+    background: var(--azul-primario-06);
+    color: var(--blanco-total);
+    border: 1px solid var(--blanco-04);
   }
 
   .menu-link,
@@ -394,9 +408,9 @@ import "../styles/global.css";
     }
 
     .dashboard-header {
-      width: calc(100% - 1.75rem);
+      width: calc(100% - 12.75rem);
       margin: 2rem 0 0 -4.65rem;
-      position: unset;
+      position: fixed;
       column-gap: 2rem;
     }
 
