@@ -20,9 +20,9 @@ export default function DeviceSection({ title, deviceId }: DeviceProps) {
   const data = generateData();
 
   return (
-    <div className="border border-slate-700 rounded-xl bg-slate-950/50 backdrop-blur overflow-hidden mb-4">
+    <div className="flex flex-col gap-3 overflow-hidden mb-4">
       {/* CABECERA */}
-      <div className="flex items-center justify-between min-[940px]:w-[380px] px-3 min-[940px]:px-6 py-2 min-[940px]:py-4 bg-[var(--azul-noche-10)] border border-[var(--blanco-02)] rounded-xl gap-2">
+      <div className="flex items-center justify-between bg-[var(--azul-noche-10)] sm:w-[380px] px-3 sm:px-6 py-2 sm:py-4 border border-[var(--blanco-04)] rounded-xl gap-2">
         <div className="flex items-baseline gap-2">
           <h2 className="text-xl font-light tracking-wide text-white">
             {title}
@@ -42,7 +42,7 @@ export default function DeviceSection({ title, deviceId }: DeviceProps) {
 
       {/* CONTENIDO */}
       {isOpen && (
-        <div className="p-6 space-y-8 animate-in slide-in-from-top-4 duration-300">
+        <div className="p-4 animate-in slide-in-from-top-4 duration-300 rounded-xl border border-[var(--blanco-04)] text-[var(--blanco-08)]">
           {/* Información Técnica */}
           <div className="bg-slate-900/50 border border-slate-800 p-4 rounded-lg grid grid-cols-2 gap-4">
             <div>

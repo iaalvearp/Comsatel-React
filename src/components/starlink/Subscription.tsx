@@ -171,7 +171,7 @@ export default function SubscriptionSection() {
             </div>
           </div>
 
-          {/* --- AQUÍ CAMBIA LA GRÁFICA --- */}
+          {/* --- AQUÍ INICIA LA GRÁFICA --- */}
           <div className="mt-4 bg-[var(--azul-noche-04)] border border-[var(--blanco-04)] rounded-lg p-2 sm:p-4">
             {/* Header del Gráfico con Filtros */}
             <div className="mb-4">
@@ -207,6 +207,44 @@ export default function SubscriptionSection() {
               xAxisKey="date"
               unit="GB"
             />
+          </div>
+
+          {/* Información Adicional de la Suscripción */}
+          <div className="mt-8 flex justify-start border border-[var(--blanco-04)] rounded-lg p-2 sm:p-4 gap-14 pt-5">
+            <div className="flex flex-col gap-2">
+              <span className="text-xs sm:text-sm font-semibold mb-1 text-[--cyan-neon]">
+                Prioridad Global
+              </span>
+              <div className="flex items-baseline gap-2">
+                <span className="text-sm sm:text-base font-semibold text-[var(--blanco-08)]">
+                  9.3 GB
+                </span>{" "}
+                <span className="text-[11px] sm:text-xs text-[var(--blanco-06)]">
+                  50 GB recurrentes
+                </span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-sm sm:text-base font-semibold text-[var(--blanco-08)]">
+                  0 GB
+                </span>{" "}
+                <span className="text-[11px] sm:text-xs text-[var(--blanco-06)]">
+                  Recarga de 0 GB
+                </span>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-xs sm:text-sm font-semibold mb-1 text-[--cyan-neon]">
+                Otros
+              </span>
+              <div className="flex items-baseline gap-2">
+                <span className="text-sm sm:text-base font-semibold text-[var(--blanco-08)]">
+                  0 GB
+                </span>{" "}
+                <span className="text-[11px] sm:text-xs text-[var(--blanco-06)]">
+                  Ilimitada
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       )}
