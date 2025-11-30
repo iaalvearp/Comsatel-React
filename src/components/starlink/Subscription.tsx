@@ -59,7 +59,7 @@ export default function SubscriptionSection() {
           </code>
         </div>
         <img
-          src="/assets/icons/icon-arrow-down.svg"
+          src="/icons/icon-arrow-down.svg"
           className={`text-white h-6 w-4 transition-transform duration-300 cursor-pointer ${
             isOpen ? "rotate-180" : ""
           }`}
@@ -96,7 +96,7 @@ export default function SubscriptionSection() {
                       <a href="#">{note.text}</a>
                       <img
                         className="cursor-pointer font-semibold h-3 hover:scale-110 transition-transform"
-                        src="/assets/icons/icon-red-x.svg"
+                        src="/icons/icon-red-x.svg"
                         alt="Cerrar"
                         onClick={() => removeNotification(note.id)}
                       />
@@ -123,7 +123,7 @@ export default function SubscriptionSection() {
                   </span>
                   <img
                     className="h-4 w-4 text-[var(--estado-activo)] mb-[2px]"
-                    src="/assets/icons/icon-like.svg"
+                    src="/icons/icon-like.svg"
                     alt="Activo"
                   />
                 </div>
@@ -200,6 +200,39 @@ export default function SubscriptionSection() {
               </div>
             </div>
 
+            <div className="device-info-grid">
+              <div className="device-info-item">
+                <label>STARLINK</label>
+                <div className="value">0100000000-0000000-0008398 HYB</div>
+              </div>
+              <div className="device-info-item">
+                <label>NÚMERO DE SERIE</label>
+                <div className="value">HPUNE0000000323443</div>
+              </div>
+              <div className="device-info-item">
+                <label>VERSIÓN DEL SOFTWARE</label>
+                <div className="value">2023.10.02.mr64789</div>
+              </div>
+              <div className="device-info-item">
+                <label>NÚMERO DE KIT</label>
+                <div className="value">KITP00222979</div>
+              </div>
+              <div className="device-info-item">
+                <label>TIEMPO DE ACTIVIDAD</label>
+                <div className="value">8 hours 20 minutes 37 seconds</div>
+              </div>
+              <div className="device-info-item">
+                <label>ÚLTIMA ACTUALIZACIÓN</label>
+                <div className="value">10/14/2025, 11:07:57 AM</div>
+              </div>
+              <div className="device-info-item full-width">
+                <label>IP PÚBLICAS</label>
+                <div className="value">149.19.163.252</div>
+                <div className="value">2803:9810:5367:2800::/56</div>
+                <div className="value">2803:9810:5367:2800::/54</div>
+              </div>
+            </div>
+
             {/* Usamos el NUEVO componente aquí */}
             <UsageBarChart
               data={chartData}
@@ -210,7 +243,7 @@ export default function SubscriptionSection() {
           </div>
 
           {/* Información Adicional de la Suscripción */}
-          <div className="mt-8 flex justify-start border border-[var(--blanco-04)] rounded-lg p-2 sm:p-4 gap-14 pt-5">
+          <div className="mt-3 flex justify-start border border-[var(--blanco-04)] rounded-lg p-2 sm:p-4 gap-14 pt-5">
             <div className="flex flex-col gap-2">
               <span className="text-xs sm:text-sm font-semibold mb-1 text-[--cyan-neon]">
                 Prioridad Global

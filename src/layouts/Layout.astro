@@ -21,31 +21,23 @@ import "../styles/global.css";
   <body>
     <header class="dashboard-header">
       <a href="/services" class="home-icon-container">
-        <img src="../assets/icons/icon-home-filled.svg" class="home-icon" />
+        <img src="../icons/icon-home-filled.svg" class="home-icon" />
       </a>
       <!-- Home icon moved to sidebar -->
       <div class="user-profile" id="userProfileBtn">
         <div class="user-info">
-          <img
-            src="../assets/icons/icon-user.svg"
-            alt="User"
-            class="user-icon"
-          />
+          <img src="../icons/icon-user.svg" alt="User" class="user-icon" />
           <span>Kevin Briones</span>
         </div>
         <img
-          src="../assets/icons/icon-arrow-down.svg"
+          src="../icons/icon-arrow-down.svg"
           alt="More"
           class="arrow-icon"
           id="arrowIcon"
         />
       </div>
       <a href={goBackTo} class="back-link-container">
-        <img
-          src="../assets/icons/icon-arrow-left.svg"
-          alt="Back"
-          class="back-icon"
-        />
+        <img src="../icons/icon-arrow-left.svg" alt="Back" class="back-icon" />
         Regresar
       </a>
       <!-- User Menu Overlay -->
@@ -63,11 +55,7 @@ import "../styles/global.css";
     <slot />
   </body>
   <footer class="dashboard-footer">
-    <img
-      src="../assets/imgs/logo-white.svg"
-      alt="Comsatel Logo"
-      class="footer-logo"
-    />
+    <img src="../imgs/logo-white.svg" alt="Comsatel Logo" class="footer-logo" />
     <span class="footer-text">COMSATEL</span>
   </footer>
 </html>
@@ -130,21 +118,21 @@ import "../styles/global.css";
 <style is:global>
   @font-face {
     font-family: "Muli";
-    src: url("../assets/fonts/Muli-Regular.ttf") format("truetype");
+    src: url("/fonts/Muli-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
   }
 
   @font-face {
     font-family: "Muli";
-    src: url("../assets/fonts/Muli-Bold.ttf") format("truetype");
+    src: url("/fonts/Muli-Bold.ttf") format("truetype");
     font-weight: 700;
     font-style: normal;
   }
 
   @font-face {
     font-family: "Muli";
-    src: url("../assets/fonts/Muli-ExtraLight.ttf") format("truetype");
+    src: url("/fonts/Muli-ExtraLight.ttf") format("truetype");
     font-weight: 200;
     font-style: normal;
   }
@@ -215,7 +203,7 @@ import "../styles/global.css";
   body {
     width: 100%;
     height: 100%;
-    background-image: url(assets/imgs/bg.avif);
+    background-image: url(/imgs/bg.avif);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

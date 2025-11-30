@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 import ChartBase from "./ChartBase";
 
 interface DeviceProps {
@@ -32,7 +31,7 @@ export default function DeviceSection({ title, deviceId }: DeviceProps) {
           </span>
         </div>
         <img
-          src="/assets/icons/icon-arrow-down.svg"
+          src="/icons/icon-arrow-down.svg"
           className={`text-white h-6 w-4 transition-transform duration-300 ${
             isOpen ? "rotate-180" : ""
           }`}
