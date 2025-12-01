@@ -17,18 +17,18 @@ const SUBSCRIPTIONS_DATA: Subscription[] = [
     id: "1",
     name: "Nombre de la suscripción",
     serviceLine: "SL-2152144-76226-67",
-    alerts: 2,
+    alerts: 0,
     status: "active",
-    alertMessage:
-      "Conexión por cable débil. La velocidad de internet puede ser más lenta de lo esperado.",
+    // Sin mensaje, no mostrará tooltip
   },
   {
     id: "2",
     name: "Nombre de la suscripción",
     serviceLine: "SL-2152144-76226-67",
-    alerts: 0,
+    alerts: 2,
     status: "active",
-    // Sin mensaje, no mostrará tooltip
+    alertMessage:
+      "Conexión por cable débil. La velocidad de internet puede ser más lenta de lo esperado.",
   },
   {
     id: "3",
@@ -158,9 +158,9 @@ export default function DevicesList() {
                       {/* TOOLTIP FLOTANTE */}
                       {hoveredAlertId === item.id && item.alertMessage && (
                         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-64 z-50 animate-in fade-in zoom-in-95 duration-200">
-                          <div className="bg-black/80 backdrop-blur-[4px] border border-white/20 p-3 rounded-lg shadow-2xl relative">
+                          <div className="bg-[var(--azul-primario-08)] backdrop-blur-[4px] border border-white/20 p-3 rounded-lg shadow-2xl relative">
                             {/* Triángulo del tooltip */}
-                            <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-black/80 border-r border-b border-white/20 rotate-45 transform"></div>
+                            <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[var(--azul-primario-08)] border-r border-b border-white/20 rotate-45 transform"></div>
 
                             <p className="text-xs text-white/90 leading-relaxed font-normal">
                               {item.alertMessage}

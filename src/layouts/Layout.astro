@@ -18,21 +18,24 @@ import "../styles/global.css";
     <title>{title}</title>
     <meta name="description" content={description} />
   </head>
-  <body>
+  <body class="">
     <header
-      class="w-[90%] h-24 flex flex-col gap-2 mx-auto mt-8 sm:w-[calc(100%_-_1.75rem)] text-[var(--blanco-08)] fixed left-0 right-0 z-20"
+      class="w-[90%] sm:w-full h-24 flex flex-col gap-2 mx-auto mt-8 m-0 sm:pl-[5%] sm:pr-[calc(5%_+_14px)] text-[var(--blanco-08)] fixed left-0 right-0 z-20"
     >
       <div
         class="flex w-full justify-between border border-[var(--blanco-04)] sm:border-none rounded-xl sm:rounded-none"
       >
         <a
           href="/services"
-          class="m-0 w-1/3 h-14 bg-[var(--azul-primario-04)] backdrop-blur-sm py-2 pr-4"
+          class="m-0 w-1/3 sm:w-28 h-14 bg-[var(--azul-primario-04)] backdrop-blur-sm py-2 pr-4 sm:p-0"
         >
-          <img src="/icons/icon-home-filled.svg" class="h-full w-14 pl-3" />
+          <img
+            src="/icons/icon-home-filled.svg"
+            class="h-full w-14 sm:w-9 pl-3 sm:p-0"
+          />
         </a>
         <div
-          class="border-none w-2/3 flex justify-between items-center h-14 bg-[var(--azul-noche-04)] backdrop-blur-sm"
+          class="border-none sm:border-solid sm:border-[var(--blanco-06)] sm:border sm:rounded-xl sm:box-border w-2/3 sm:w-max sm:grow flex justify-between items-center h-14 bg-[var(--azul-noche-04)] backdrop-blur-sm sm:px-3"
           id="userProfileBtn"
         >
           <div class="h-full flex items-center">
@@ -46,14 +49,14 @@ import "../styles/global.css";
           <img
             src="/icons/icon-arrow-down.svg"
             alt="More"
-            class="h-full p-3 cursor-pointer transition-transform duration-300 ease-in-out rotate-0"
+            class="h-full p-3 sm:px-0 cursor-pointer transition-transform duration-300 ease-in-out rotate-0"
             id="arrowIcon"
           />
         </div>
       </div>
       <a
         href={goBackTo}
-        class="flex items-center gap-1 w-fit h-fit bg-[var(--azul-primario-04)] backdrop-blur-sm text-[var(--blanco-08)] no-underline text-xs font-semibold absolute left-0 top-20 hover:text-[var(--cyan-neon)] transition-colors duration-300 ease-in-out py-2 pr-4 rounded-lg"
+        class="flex items-center gap-1 w-fit h-fit bg-[var(--azul-primario-04)] backdrop-blur-sm text-[var(--blanco-08)] no-underline text-xs font-semibold absolute left-0 sm:left-[5%] top-20 hover:text-[var(--cyan-neon)] transition-colors duration-300 ease-in-out py-2 pr-4 rounded-lg"
       >
         <svg
           width="80"
@@ -81,7 +84,10 @@ import "../styles/global.css";
         Regresar
       </a>
       <!-- User Menu Overlay -->
-      <div class="user-menu-container" id="userMenu">
+      <div
+        class="flex h-fit w-full sm:w-[calc(100%_-_112px)] border border-[var(--blanco-total)] rounded-xl p-4 bg-[var(--azul-noche-04)] backdrop-blur-[5px] invisible opacity-0 -translate-y-[10px] transition-all duration-300 ease-in-out relative z-10 sm:left-28 [&.show-menu]:visible [&.show-menu]:opacity-100 [&.show-menu]:translate-y-0"
+        id="userMenu"
+      >
         <div class="user-menu-row">
           <p>Correo: <span id="company-email">correo@mail.com</span></p>
           <p>Nombre de Empresa: <span id="company-name">Nivek</span></p>
@@ -249,6 +255,9 @@ import "../styles/global.css";
     background-repeat: no-repeat;
     font-family: Muli;
     overflow-y: scroll;
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows: auto 1fr auto;
   }
 
   .dashboard-header {
@@ -305,28 +314,6 @@ import "../styles/global.css";
 
   .flip {
     transform: rotate(180deg);
-  }
-
-  .user-menu-container {
-    display: flex;
-    height: fit-content;
-    width: 100%;
-    grid-column: 2 / 3;
-    border: 1px solid var(--blanco-total);
-    border-radius: 12px;
-    padding: 1rem;
-    background-color: var(--azul-primario-096);
-    backdrop-filter: blur(5px);
-
-    /* CAMBIOS PARA ANIMACIÓN */
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    z-index: 10;
-    background: var(--azul-noche-04);
-    backdrop-filter: blur(5px);
   }
 
   .show-menu {
@@ -409,7 +396,7 @@ import "../styles/global.css";
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
+    position: fixed;
     padding: 1rem 5%;
     bottom: 0rem;
     color: var(--blanco-total);
@@ -439,19 +426,10 @@ import "../styles/global.css";
 	*/
 
   @media (width >= 940px) {
-    body {
-      padding-left: 10rem;
-    }
-
     .dashboard-header {
-      width: calc(100% - 12.75rem);
       margin: 2rem 0 0 -4.65rem;
       position: fixed;
       column-gap: 2rem;
-    }
-
-    .dashboard-footer {
-      margin-left: -10rem;
     }
     .home-icon {
       margin-left: 0;
@@ -467,6 +445,9 @@ import "../styles/global.css";
     .back-icon {
       width: 1.125rem;
       max-width: 1.25rem;
+    }
+    .dashboard-footer {
+      padding: 1rem calc(5% + 14px) 1rem 5%;
     }
   }
 </style>

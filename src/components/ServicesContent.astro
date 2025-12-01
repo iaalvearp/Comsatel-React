@@ -1,90 +1,47 @@
 ---
-
+// Componente ServicesContent convertido a Tailwind
 ---
 
-<section class="w-full mx-auto mt-40 px-5">
+<section
+  class="w-full mx-auto mt-40 sm:mt-36 px-5 sm:p-0 sm:pl-[calc(5%_+_112px)]"
+>
   <main class="w-full mx-auto mt-10">
-    <h2 class="section-title">Mis servicios</h2>
+    <!-- .section-title reemplazado -->
+    <h2
+      class="text-[var(--blanco-06)] font-semibold text-[0.8rem] mb-4 uppercase tracking-[1px]"
+    >
+      Mis servicios
+    </h2>
 
-    <div class="services-grid">
-      <!-- Starlink Service Card -->
-      <article class="service-card">
-        <div class="service-logo">STARLINK</div>
+    <!-- .services-grid reemplazado -->
+    <div
+      class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-[30px]"
+    >
+      <!-- Starlink Service Card (.service-card reemplazado) -->
+      <article
+        class="bg-gradient-to-b from-[var(--azul-primario-08)] to-[var(--azul-primario-total)] border border-[var(--blanco-08)] rounded-[20px] px-5 py-10 flex flex-col items-center justify-between h-[250px] transition-transform duration-300 hover:-translate-y-[5px]"
+      >
+        <!-- .service-logo reemplazado -->
+        <div
+          class="text-[var(--blanco-total)] text-[2rem] font-bold tracking-[5px] uppercase mt-5"
+        >
+          STARLINK
+        </div>
+
+        <!-- .service-btn reemplazado -->
         <a
           href="/starlink"
-          class="service-btn"
-          style="text-align: center; text-decoration: none; display: block;"
-          >Ingresar</a
+          class="w-full max-w-[180px] p-[10px] rounded-[10px] bg-[var(--accent-cyan)] text-[var(--azul-profundo)] border-none text-sm font-semibold cursor-pointer transition-colors duration-300 ease-in hover:bg-[var(--cyan-hover)] text-center no-underline block"
         >
+          Ingresar
+        </a>
       </article>
     </div>
   </main>
 </section>
 
 <style>
-  .section-title {
-    color: var(--blanco-06);
-    font-weight: 600;
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 30px;
-  }
-
-  .service-card {
-    background: linear-gradient(
-      180deg,
-      var(--azul-primario-08) 0%,
-      var(--azul-primario-total) 100%
-    );
-    border: 1px solid var(--blanco-08);
-    border-radius: 20px;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 250px;
-    transition: transform 0.3s;
-  }
-
-  .service-card:hover {
-    transform: translateY(-5px);
-  }
-
-  .service-logo {
-    color: var(--blanco-total);
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    margin-top: 20px;
-  }
-
-  .service-btn {
-    width: 100%;
-    max-width: 180px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: var(--accent-cyan);
-    color: var(--azul-profundo);
-    border: none;
-    font-size: 0.875rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in;
-  }
-
-  .service-btn:hover {
-    background-color: var(--cyan-hover);
-  }
-
+  /* Clases conservadas porque no aparecían en el HTML proporcionado */
   @media (width >= 940px) {
     .dashboard-content {
       margin: 8rem 0 0 1rem;

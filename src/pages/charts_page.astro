@@ -10,7 +10,9 @@ import DeviceSection from "../components/starlink/Device";
   title="Starlink Dashboard"
   description="Dashboard de Starlink"
 >
-  <main class="w-[90%] mt-44 mb-24 mx-auto">
+  <main
+    class="w-[90%] sm:w-full sm:pl-[calc(5%_+_112px)] sm:pr-[5%] mt-44 mb-24 mx-auto"
+  >
     <SubscriptionSection client:load />
 
     <DeviceSection client:load title="Dispositivo 1" deviceId="KITP3340" />
@@ -22,8 +24,7 @@ import DeviceSection from "../components/starlink/Device";
 <style>
   @media (width >= 940px) {
     main {
-      width: calc(100% - 7.5rem);
-      margin: 9rem 0 6rem 1rem;
+      margin: 7.75rem 0 6rem 0rem;
     }
   }
 </style>
