@@ -1,213 +1,44 @@
 ---
-/* Devices.astro */
+import DevicesList from "./starlink/DevicesList";
 ---
 
-<section class="dashboard-content">
-  <main class="dashboard-main starlink-main">
-    <div class="starlink-nav">
-      <div class="alerts-summary">
-        <div class="summary-text">
-          Suscripciones: <span class="status-active">7 Activas</span>
-          <span class="status-ending">1 Finalizando</span>
-          <span class="status-inactive">1 Inactiva</span>
+<section class="relative w-full flex justify-center mt-40 mb-24">
+  <main class="w-[90%] mx-auto">
+    <div>
+      <div
+        class="w-full flex items-center justify-between bg-[var(--azul-primario-096)] border border-[var(--blanco-06)] rounded-xl px-2 py-3"
+      >
+        <div class="text-sm font-semibold text-[var(--blanco-08)]">
+          Suscripciones: <span class="text-[var(--estado-activo)]"
+            >7 Activas</span
+          >
+          <br class="sm:hidden" />
+          <span class="text-[var(--estado-finalizando)]">1 Finalizando</span>
+          <span class="text-[var(--estado-inactivo)]">1 Inactiva</span>
         </div>
-        <div class="alerts-count">
-          Alertas Activas
+        <div
+          class="text-sm font-semibold text-[var(--blanco-08)] flex items-center gap-2"
+        >
+          Alertas <br class="sm:hidden" />Activas
           <img src="/icons/Frame.svg" alt="Alert" class="alert-icon" />
           3
         </div>
       </div>
     </div>
 
-    <div class="starlink-header">
-      <h2 class="section-title">
-        Suscripciones <strong>Starlink</strong>
+    <div class="flex items-center justify-end mt-8 mb-3">
+      <h2
+        class="text-base w-1/2 font-light text-[var(--blanco-06)] tracking-widest uppercase mb-0"
+      >
+        Suscripciones <strong class="text-[var(--blanco-08)]">Starlink</strong>
       </h2>
-      <span class="total-subs">8 Suscripciones</span>
+      <span
+        class="text-base w-1/2 flex justify-end font-semibold text-[var(--blanco-08)]"
+        >8 Suscripciones</span
+      >
     </div>
 
-    <div class="subscriptions-table-container">
-      <table class="subscriptions-table">
-        <thead>
-          <tr>
-            <th>SUSCRIPCIÓN</th>
-            <th>LINEA DE SERVICIO</th>
-            <th>ALERTAS ACTIVAS</th>
-            <th>ESTADO</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><p class="subscription-name">Nombre de la suscripción</p></td>
-            <td><p class="subscription-line">SL-2152144-76226-67</p></td>
-            <td>
-              <p class="alerts-count">
-                2 <img
-                  src="/icons/Frame.svg"
-                  alt="Alert"
-                  class="alert-icon-small"
-                />
-              </p>
-            </td>
-            <td>
-              <div class="status-badge active-badge">
-                Activa <span class="dot active"></span>
-              </div>
-            </td>
-            <td class="action-cell">
-              <a href="/charts_page">
-                <img
-                  src="/icons/icon-circle-arrow-right.svg"
-                  alt="Go"
-                  class="action-icon"
-                />
-              </a>
-            </td>
-          </tr>
-
-          <tr>
-            <td><p class="subscription-name">Nombre de la suscripción</p></td>
-            <td><p class="subscription-line">SL-2152144-76226-67</p></td>
-            <td>
-              <p class="alerts-count">
-                0 <img
-                  src="/icons/Frame.svg"
-                  alt="Alert"
-                  class="alert-icon-small"
-                />
-              </p>
-            </td>
-            <td>
-              <div class="status-badge active-badge">
-                Activa <span class="dot active"></span>
-              </div>
-            </td>
-            <td class="action-cell">
-              <a href="/charts_page">
-                <img
-                  src="/icons/icon-circle-arrow-right.svg"
-                  alt="Go"
-                  class="action-icon"
-                />
-              </a>
-            </td>
-          </tr>
-
-          <tr>
-            <td><p class="subscription-name">Nombre de la suscripción</p></td>
-            <td><p class="subscription-line">SL-2152144-76226-67</p></td>
-            <td>
-              <p class="alerts-count">
-                0 <img
-                  src="/icons/Frame.svg"
-                  alt="Alert"
-                  class="alert-icon-small"
-                />
-              </p>
-              <td>
-                <div class="status-badge ending-badge">
-                  Finalizando <span class="dot ending"></span>
-                </div>
-              </td>
-              <td class="action-cell">
-                <a href="/charts_page">
-                  <img
-                    src="/icons/icon-circle-arrow-right.svg"
-                    alt="Go"
-                    class="action-icon"
-                  />
-                </a>
-              </td>
-            </td>
-
-            <tr>
-              <td><p class="subscription-name">Nombre de la suscripción</p></td>
-              <td><p class="subscription-line">SL-2152144-76226-67</p></td>
-              <td>
-                <p class="alerts-count">
-                  1 <img
-                    src="/icons/Frame.svg"
-                    alt="Alert"
-                    class="alert-icon-small"
-                  />
-                </p>
-              </td>
-              <td>
-                <div class="status-badge active-badge">
-                  Activa <span class="dot active"></span>
-                </div>
-              </td>
-              <td class="action-cell">
-                <a href="/charts_page">
-                  <img
-                    src="/icons/icon-circle-arrow-right.svg"
-                    alt="Go"
-                    class="action-icon"
-                  />
-                </a>
-              </td>
-            </tr>
-
-            <tr>
-              <td><p class="subscription-name">Nombre de la suscripción</p></td>
-              <td><p class="subscription-line">SL-2152144-76226-67</p></td>
-              <td>
-                <p class="alerts-count">
-                  0 <img
-                    src="/icons/Frame.svg"
-                    alt="Alert"
-                    class="alert-icon-small"
-                  />
-                </p>
-              </td>
-              <td>
-                <div class="status-badge inactive-badge">
-                  Inactivo <span class="dot inactive"></span>
-                </div>
-              </td>
-              <td class="action-cell">
-                <a href="/charts_page">
-                  <img
-                    src="/icons/icon-circle-arrow-right.svg"
-                    alt="Go"
-                    class="action-icon"
-                  />
-                </a>
-              </td>
-            </tr>
-
-            <tr>
-              <td><p class="subscription-name">Nombre de la suscripción</p></td>
-              <td><p class="subscription-line">SL-2152144-76226-67</p></td>
-              <td>
-                <p class="alerts-count">
-                  0 <img
-                    src="/icons/Frame.svg"
-                    alt="Alert"
-                    class="alert-icon-small"
-                  />
-                </p>
-              </td>
-              <td>
-                <div class="status-badge active-badge">
-                  Activa <span class="dot active"></span>
-                </div>
-              </td>
-              <td class="action-cell">
-                <a href="/charts_page">
-                  <img
-                    src="/icons/icon-circle-arrow-right.svg"
-                    alt="Go"
-                    class="action-icon"
-                  />
-                </a>
-              </td>
-            </tr>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <DevicesList client:load />
   </main>
 
   <style>

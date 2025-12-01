@@ -5,6 +5,7 @@ interface Props {
   description?: string;
 }
 const { goBackTo, title, description } = Astro.props;
+
 import "../styles/global.css";
 ---
 
@@ -16,28 +17,67 @@ import "../styles/global.css";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <!-- styles imported via ESM at the top of this file -->
   </head>
   <body>
-    <header class="dashboard-header">
-      <a href="/services" class="home-icon-container">
-        <img src="/icons/icon-home-filled.svg" class="home-icon" />
-      </a>
-      <!-- Home icon moved to sidebar -->
-      <div class="user-profile" id="userProfileBtn">
-        <div class="user-info">
-          <img src="/icons/icon-user.svg" alt="User" class="user-icon" />
-          <span>Kevin Briones</span>
+    <header
+      class="w-[90%] h-24 flex flex-col gap-2 mx-auto mt-8 sm:w-[calc(100%_-_1.75rem)] text-[var(--blanco-08)] fixed left-0 right-0 z-20"
+    >
+      <div
+        class="flex w-full justify-between border border-[var(--blanco-04)] sm:border-none rounded-xl sm:rounded-none"
+      >
+        <a
+          href="/services"
+          class="m-0 w-1/3 h-14 bg-[var(--azul-primario-04)] backdrop-blur-sm py-2 pr-4"
+        >
+          <img src="/icons/icon-home-filled.svg" class="h-full w-14 pl-3" />
+        </a>
+        <div
+          class="border-none w-2/3 flex justify-between items-center h-14 bg-[var(--azul-noche-04)] backdrop-blur-sm"
+          id="userProfileBtn"
+        >
+          <div class="h-full flex items-center">
+            <img
+              src="/icons/icon-user.svg"
+              alt="User"
+              class="h-full py-2 pr-2"
+            />
+            <span>Kevin Briones</span>
+          </div>
+          <img
+            src="/icons/icon-arrow-down.svg"
+            alt="More"
+            class="h-full p-3 cursor-pointer transition-transform duration-300 ease-in-out rotate-0"
+            id="arrowIcon"
+          />
         </div>
-        <img
-          src="/icons/icon-arrow-down.svg"
-          alt="More"
-          class="arrow-icon"
-          id="arrowIcon"
-        />
       </div>
-      <a href={goBackTo} class="back-link-container">
-        <img src="/icons/icon-arrow-left.svg" alt="Back" class="back-icon" />
+      <a
+        href={goBackTo}
+        class="flex items-center gap-1 w-fit h-fit bg-[var(--azul-primario-04)] backdrop-blur-sm text-[var(--blanco-08)] no-underline text-xs font-semibold absolute left-0 top-20 hover:text-[var(--cyan-neon)] transition-colors duration-300 ease-in-out py-2 pr-4 rounded-lg"
+      >
+        <svg
+          width="80"
+          height="48"
+          viewBox="0 0 80 48"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-fit transition-colors duration-300 ease-in-out"
+        >
+          <g clip-path="url(#clip0_2_21)">
+            <path
+              d="M11.2597 26.1863L74.0397 26.1863C74.8997 26.1863 75.9597 24.5463 75.9997 23.7063C76.0197 22.7663 74.9997 21.0263 74.0397 21.0263L11.2597 21.0263L25.7397 6.4663C27.7997 4.0063 24.8997 0.626302 22.2397 2.5863L3.15971 21.4863C1.95971 22.6863 1.89971 24.4063 3.07971 25.6463L22.2597 44.6263C24.8197 46.5063 27.7397 43.4263 25.8597 40.8463L11.2597 26.1863Z"
+              fill="currentColor"></path>
+          </g>
+          <defs>
+            <clipPath id="clip0_2_21">
+              <rect
+                width="48"
+                height="80"
+                fill="currentColor"
+                transform="translate(80 3.49691e-06) rotate(90)"></rect>
+            </clipPath>
+          </defs>
+        </svg>
         Regresar
       </a>
       <!-- User Menu Overlay -->
@@ -212,13 +252,9 @@ import "../styles/global.css";
   }
 
   .dashboard-header {
-    display: grid;
     position: absolute;
     width: 90%;
     margin: 2rem 1rem 0;
-    gap: 1rem;
-    grid-template-columns: 3.5rem 1fr;
-    grid-template-rows: 3.5rem 3.5rem;
     color: var(--blanco-total);
     z-index: 1;
   }
@@ -374,7 +410,7 @@ import "../styles/global.css";
     justify-content: space-between;
     align-items: center;
     position: absolute;
-    padding: 1rem 1.5rem;
+    padding: 1rem 5%;
     bottom: 0rem;
     color: var(--blanco-total);
     background-color: var(--azul-profundo);
