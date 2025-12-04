@@ -119,14 +119,19 @@ export default function DevicesList() {
               <tr key={item.id} className="group">
                 {/* COLUMNA 1: NOMBRE */}
                 <td className="bg-[var(--azul-primario-06)] px-5 py-4 text-[var(--blanco-total)] text-sm border-y border-[var(--blanco-02)] first:rounded-l-[18px] first:border-l align-middle">
-                  <p className="flex items-center gap-1 font-medium">
+                  <a
+                    href="/charts_page"
+                    className="flex items-center gap-1 font-medium"
+                  >
                     {item.name}
-                  </p>
+                  </a>
                 </td>
 
                 {/* COLUMNA 2: LINEA */}
                 <td className="bg-[var(--azul-primario-06)] px-5 py-4 text-[var(--blanco-total)] text-sm border-y border-[var(--blanco-02)] align-middle">
-                  <p className="flex items-center gap-1">{item.serviceLine}</p>
+                  <a href="/charts_page" className="flex items-center gap-1">
+                    {item.serviceLine}
+                  </a>
                 </td>
 
                 {/* COLUMNA 3: ALERTAS CON TOOLTIP */}
@@ -174,14 +179,16 @@ export default function DevicesList() {
 
                 {/* COLUMNA 4: ESTADO (BADGES) */}
                 <td className="bg-[var(--azul-primario-06)] px-5 py-4 text-[var(--blanco-total)] text-sm border-y border-[var(--blanco-02)] align-middle">
-                  <div
-                    className={`inline-flex items-center justify-between gap-4 px-4 py-1.5 rounded-full border text-xs font-semibold w-full max-w-[140px] bg-white/[0.03] ${statusStyle.badge}`}
-                  >
-                    {statusStyle.text}
-                    <span
-                      className={`w-[18px] h-[6px] rounded-full inline-block ${statusStyle.dot}`}
-                    ></span>
-                  </div>
+                  <a href="/charts_page">
+                    <div
+                      className={`inline-flex items-center justify-between gap-4 px-4 py-1.5 rounded-full border text-xs font-semibold w-full max-w-[140px] bg-white/[0.03] ${statusStyle.badge}`}
+                    >
+                      {statusStyle.text}
+                      <span
+                        className={`w-[18px] h-[6px] rounded-full inline-block ${statusStyle.dot}`}
+                      ></span>
+                    </div>
+                  </a>
                 </td>
 
                 {/* COLUMNA 5: ACCIÓN */}

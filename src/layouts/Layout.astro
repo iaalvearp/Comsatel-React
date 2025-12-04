@@ -18,16 +18,18 @@ import "../styles/global.css";
     <title>{title}</title>
     <meta name="description" content={description} />
   </head>
-  <body class="">
+  <body
+    class="w-full h-full bg-[url('/imgs/bg.webp')] bg-cover bg-center bg-no-repeat font-['Muli'] overflow-y-scroll grid min-h-[100dvh] grid-rows-[auto_1fr_auto]"
+  >
     <header
-      class="w-[90%] sm:w-full h-24 flex flex-col gap-2 mx-auto mt-8 m-0 sm:pl-[5%] sm:pr-[calc(5%_+_14px)] text-[var(--blanco-08)] fixed left-0 right-0 z-20"
+      class="w-full h-[9.5rem] flex flex-col gap-2 pt-8 m-0 px-[5%] text-[var(--blanco-08)] bg-[var(--azul-primario-04)] backdrop-blur-md fixed z-20"
     >
       <div
         class="flex w-full justify-between border border-[var(--blanco-04)] sm:border-none rounded-xl sm:rounded-none"
       >
         <a
           href="/services"
-          class="m-0 w-1/3 sm:w-28 h-14 bg-[var(--azul-primario-04)] backdrop-blur-sm py-2 pr-4 sm:p-0"
+          class="m-0 w-1/3 h-14 sm:w-28 bg-[var(--azul-primario-04)] backdrop-blur-sm py-2 pr-4 sm:p-0 glass-effect m-only"
         >
           <img
             src="/icons/icon-home-filled.svg"
@@ -56,7 +58,7 @@ import "../styles/global.css";
       </div>
       <a
         href={goBackTo}
-        class="flex items-center gap-1 w-fit h-fit bg-[var(--azul-primario-04)] backdrop-blur-sm text-[var(--blanco-08)] no-underline text-xs font-semibold absolute left-0 sm:left-[5%] top-20 hover:text-[var(--cyan-neon)] transition-colors duration-300 ease-in-out py-2 pr-4 rounded-lg"
+        class="flex items-center gap-1 w-fit h-6 bg-[var(--azul-primario-04)] backdrop-blur-sm text-[var(--blanco-08)] no-underline text-xs font-semibold absolute left-0 md:left-[5%] top-28 hover:text-[var(--cyan-neon)] transition-colors duration-300 ease-in-out py-2 pr-4 rounded-lg glass-effect"
       >
         <svg
           width="80"
@@ -85,12 +87,13 @@ import "../styles/global.css";
       </a>
       <!-- User Menu Overlay -->
       <div
-        class="flex h-fit w-full sm:w-[calc(100%_-_112px)] border border-[var(--blanco-total)] rounded-xl p-4 bg-[var(--azul-noche-04)] backdrop-blur-[5px] invisible opacity-0 -translate-y-[10px] transition-all duration-300 ease-in-out relative z-10 sm:left-28 [&.show-menu]:visible [&.show-menu]:opacity-100 [&.show-menu]:translate-y-0"
+        class="flex h-fit w-full sm:w-[calc(100%_-_112px)] border border-[var(--blanco-total)] rounded-xl p-4 bg-[var(--azul-noche-04)] backdrop-blur-[12px] invisible opacity-0 -translate-y-[10px] transition-all duration-300 ease-in-out relative z-10 sm:left-28 [&.show-menu]:visible [&.show-menu]:opacity-100 [&.show-menu]:translate-y-0 glass-effect"
         id="userMenu"
       >
         <div class="user-menu-row">
           <p>Correo: <span id="company-email">correo@mail.com</span></p>
           <p>Nombre de Empresa: <span id="company-name">Nivek</span></p>
+          <br class="md:hidden" />
           <a href="/change_password_internal" class="menu-link"
             >Cambio de clave</a
           >
@@ -159,6 +162,131 @@ import "../styles/global.css";
   }
 
   logoutBtn?.addEventListener("click", logout);
+
+  /* PADDING RESIZING */
+  /**
+   * Función maestra para sincronizar el layout fijo en Safari/Móvil.
+   * Mide el header y clona sus métricas exactas al stats-box,
+   * y luego fija el stats-box debajo del header.
+   */
+  function makeStatsBoxStickyAndMatching(): void {
+    // 1. Obtener referencias a los elementos clave
+    const header = document.querySelector("header");
+    // El cuadro azul de estadísticas
+    const statsBox = document.querySelector(".stats-box") as HTMLElement;
+    // El contenedor principal que debe scrollear DEBAJO de los elementos fijos.
+    // CAMBIA '.main-scroll-container' POR LA CLASE REAL DE TU CONTENEDOR DE LISTA
+    const contentBelow = document.querySelector(
+      ".main-scroll-container"
+    ) as HTMLElement;
+
+    // Validaciones de seguridad
+    if (!header || !statsBox || !(header instanceof HTMLElement)) {
+      console.error(
+        "No se encontraron los elementos necesarios (header o .stats-box)"
+      );
+      return;
+    }
+
+    // --- PASO 1: MEDICIÓN EXACTA (La clave para Safari) ---
+
+    // Usamos getComputedStyle para obtener los valores REALES en píxeles
+    // que el navegador está usando para el header.
+    const headerStyles = window.getComputedStyle(header);
+
+    // Obtenemos el padding exacto (ej: "18.5px")
+    const exactPaddingLeft = headerStyles.paddingLeft;
+    const exactPaddingRight = headerStyles.paddingRight;
+
+    // Obtenemos la altura exacta del header para saber dónde colocar el stats-box
+    // offsetHeight incluye borders y paddings verticales si los hubiera.
+    const headerHeight = header.offsetHeight;
+
+    // --- PASO 2: APLICAR ESTILOS AL STATS-BOX ---
+
+    // Reseteamos estilos previos por si acaso
+    statsBox.style.cssText = "";
+
+    // Aplicamos la magia
+    Object.assign(statsBox.style, {
+      // Lo hacemos fijo para que no scrollee
+      position: "fixed",
+      // Lo colocamos exactamente donde termina el header
+      top: `${headerHeight}px`,
+      left: "0",
+      // Ancho total
+      width: "100%",
+      // CRUCIAL: border-box para que el padding no sume al 100% de ancho
+      boxSizing: "border-box",
+      // Inyectamos los paddings idénticos a los del header
+      paddingLeft: exactPaddingLeft,
+      paddingRight: exactPaddingRight,
+      // Nos aseguramos que esté por encima del contenido pero debajo del header (si header tiene z-index 100)
+      zIndex: "90",
+      // Opcional: si necesitas un fondo para que no se transparente el contenido al hacer scroll
+      backgroundColor: "#0a192f", // Usa el color de fondo real de tu app
+    });
+
+    // --- PASO 3: EMPUJAR EL CONTENIDO DE ABAJO ---
+
+    // Ahora que el header y el stats-box son fijos, el contenido de abajo
+    // saltará hacia arriba y se esconderá detrás de ellos. Debemos empujarlo.
+
+    if (contentBelow && contentBelow instanceof HTMLElement) {
+      // Medimos la altura del stats-box una vez que ya está fijado y con paddings
+      const statsBoxHeight = statsBox.offsetHeight;
+      // La altura total que ocupan los elementos fijos
+      const totalFixedOffset = headerHeight + statsBoxHeight;
+
+      // Aplicamos un margen superior al contenido scrolleable
+      // Añadimos un pequeño extra (ej. 20px) para separación visual.
+      contentBelow.style.marginTop = `${totalFixedOffset + 20}px`;
+    }
+  }
+
+  // --- EJECUCIÓN ---
+
+  function syncResizeContainers(): void {
+    // 1. Recuperamos el ancho TOTAL de la ventana (el viewport)
+    // En tu ejemplo: 375px
+    const viewportWidth = window.innerWidth;
+
+    // 2. Calculamos el 5% exacto
+    // En tu ejemplo: 375 * 0.05 = 18.75 -> Math.floor lo deja en 18px
+    const paddingPx = Math.floor(viewportWidth * 0.05);
+
+    // 3. Buscamos TODOS los elementos con la clase "resize-container"
+    const containers = document.querySelectorAll(".resize-content");
+
+    // 4. Les inyectamos ese padding calculado
+    containers.forEach((container) => {
+      // Verificación de tipo para TS
+      if (container instanceof HTMLElement) {
+        // Forzamos box-sizing para que el padding no aumente el ancho total
+        container.style.boxSizing = "border-box";
+
+        // Ancho total del viewport
+        container.style.width = "100%";
+
+        // Aplicamos los 18px (o lo que salga del cálculo) a cada lado
+        container.style.paddingLeft = `${paddingPx}px`;
+        container.style.paddingRight = `${paddingPx}px`;
+      }
+    });
+  }
+
+  // --- EJECUCIÓN ---
+
+  // Ejecutar al inicio
+  window.addEventListener("DOMContentLoaded", syncResizeContainers);
+  window.addEventListener("load", syncResizeContainers);
+
+  // Ejecutar al redimensionar (por si giran el celular)
+  let resizeTimer: number | undefined;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(syncResizeContainers, 100);
+  });
 </script>
 
 <style is:global>
@@ -245,20 +373,6 @@ import "../styles/global.css";
     margin: 0;
     padding: 0;
   }
-  html,
-  body {
-    width: 100%;
-    height: 100%;
-    background-image: url(/imgs/bg.avif);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    font-family: Muli;
-    overflow-y: scroll;
-    display: grid;
-    min-height: 100dvh;
-    grid-template-rows: auto 1fr auto;
-  }
 
   .dashboard-header {
     position: absolute;
@@ -321,6 +435,14 @@ import "../styles/global.css";
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
+
+    background-color: var(--azul-primario-04);
+
+    /* 2. El truco para SAFARI (iOS/macOS) */
+    -webkit-backdrop-filter: blur(12px);
+
+    /* 3. El estándar para Chrome, Edge, Firefox */
+    backdrop-filter: blur(12px);
   }
 
   .user-menu-row {
@@ -402,15 +524,14 @@ import "../styles/global.css";
     color: var(--blanco-total);
     background-color: var(--azul-profundo);
     z-index: 10;
-
-    .footer-logo {
-      height: 100%;
-    }
-    .footer-text {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
+  }
+  .footer-logo {
+    height: 100%;
+  }
+  .footer-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
   }
 
   .dashboard-content {
@@ -419,6 +540,16 @@ import "../styles/global.css";
   td img {
     width: 1.75rem;
     height: auto;
+  }
+  .glass-effect {
+    /* 1. El color base: Blanco al 40% de opacidad */
+    background-color: rgba(22, 33, 62, 0.4);
+
+    /* 2. El truco para SAFARI (iOS/macOS) */
+    -webkit-backdrop-filter: blur(12px) !important;
+
+    /* 3. El estándar para Chrome, Edge, Firefox */
+    backdrop-filter: blur(12px);
   }
 
   /*
@@ -448,6 +579,15 @@ import "../styles/global.css";
     }
     .dashboard-footer {
       padding: 1rem calc(5% + 14px) 1rem 5%;
+    }
+    .glass-effect.m-only {
+      background-color: transparent;
+
+      /* 2. El truco para SAFARI (iOS/macOS) */
+      -webkit-backdrop-filter: blur(0px);
+
+      /* 3. El estándar para Chrome, Edge, Firefox */
+      backdrop-filter: blur(0px);
     }
   }
 </style>
