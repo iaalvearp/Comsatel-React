@@ -8,7 +8,7 @@ export default function SubscriptionSection() {
   const [notifications, setNotifications] = useState([
     {
       id: 1,
-      text: "Notificación 001 - 000",
+      text: "Alerta 001",
       modalTitle:
         "Conexión por cable débil. La velocidad de internet puede ser más lenta de lo esperado.",
       modalText:
@@ -16,7 +16,7 @@ export default function SubscriptionSection() {
     },
     {
       id: 2,
-      text: "Notificación 002 - 000 - 000",
+      text: "Alerta 002",
       modalTitle: "Actualización disponible",
       modalText:
         "Hay una nueva versión de firmware disponible para su dispositivo. Se recomienda instalarla para mejorar la estabilidad de la conexión.",
@@ -98,7 +98,7 @@ export default function SubscriptionSection() {
             </div>
             <div className="text-center sm:text-right gap-2">
               <label className="text-[var(--blanco-08)] text-xs tracking-widest uppercase font-semibold">
-                Notificaciones
+                Alertas
               </label>
 
               {/* LISTA DE NOTIFICACIONES */}
