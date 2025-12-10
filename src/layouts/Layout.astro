@@ -58,6 +58,7 @@ import "../styles/global.css";
       </div>
       <a
         href={goBackTo}
+        id="arrowLeft"
         class="flex items-center gap-1 w-fit h-6 bg-[var(--azul-primario-04)] backdrop-blur-sm text-[var(--blanco-08)] no-underline text-xs font-semibold absolute left-0 md:left-[5%] top-28 hover:text-[var(--cyan-neon)] transition-colors duration-300 ease-in-out py-2 pr-4 rounded-lg glass-effect"
       >
         <svg
@@ -93,11 +94,12 @@ import "../styles/global.css";
         <div class="user-menu-row">
           <p>Correo: <span id="company-email">correo@mail.com</span></p>
           <p>Nombre de Empresa: <span id="company-name">Nivek</span></p>
-          <br class="md:hidden" />
-          <a href="/change_password_internal" class="menu-link"
-            >Cambio de clave</a
-          >
-          <button class="menu-link-btn" id="logoutBtn">Cerrar Sesión</button>
+          <div class="flex justify-between items-center">
+            <a href="/change_password_internal" class="menu-link"
+              >Cambio de clave</a
+            >
+            <button class="menu-link-btn" id="logoutBtn">Cerrar Sesión</button>
+          </div>
         </div>
       </div>
     </header>
@@ -201,6 +203,7 @@ import "../styles/global.css";
     // Obtenemos la altura exacta del header para saber dónde colocar el stats-box
     // offsetHeight incluye borders y paddings verticales si los hubiera.
     const headerHeight = header.offsetHeight;
+    const headerWidth = header.offsetWidth;
 
     // --- PASO 2: APLICAR ESTILOS AL STATS-BOX ---
 
@@ -275,17 +278,62 @@ import "../styles/global.css";
     });
   }
 
+  function syncWidthLikeHeader(): void {
+    const header = document.querySelector("header");
+
+    // Validación de seguridad para TS: Si no hay header, no hacemos nada
+    if (!header) return;
+
+    // 1. OBTENEMOS LA MEDIDA EXACTA DEL HEADER
+    // getBoundingClientRect().width es ideal porque te da el ancho renderizado real,
+    // incluso con decimales, del elemento fixed.
+    const headerWidth = header.getBoundingClientRect().width;
+
+    // Calculamos el 5% basado en el ancho del header
+    const paddingPx = Math.floor(headerWidth * 0.05);
+
+    const containers = document.querySelectorAll(".like-header");
+
+    const arrowLeft = document.getElementById("arrowLeft");
+
+    if (arrowLeft instanceof HTMLElement)
+      arrowLeft.style.marginLeft = `${paddingPx}px`;
+
+    containers.forEach((container) => {
+      if (container instanceof HTMLElement) {
+        container.style.boxSizing = "border-box";
+
+        // 2. APLICAMOS EL ANCHO DEL HEADER
+        // Es crucial poner 'px' para que CSS/TS lo acepte
+        container.style.width = `${headerWidth - paddingPx * 2}px`;
+      }
+    });
+  }
+
+  // --- FUNCIÓN ORQUESTADORA ---
+  // Ejecuta ambas funciones en orden
+  function runAllResizeTasks(): void {
+    // 1. Ejecutar tu función de redimensionamiento de contenedores
+    if (typeof syncResizeContainers === "function") {
+      syncResizeContainers();
+    }
+
+    // 2. Ejecutar la sincronización con el header
+    syncWidthLikeHeader();
+  }
+
   // --- EJECUCIÓN ---
 
   // Ejecutar al inicio
-  window.addEventListener("DOMContentLoaded", syncResizeContainers);
-  window.addEventListener("load", syncResizeContainers);
+  window.addEventListener("DOMContentLoaded", runAllResizeTasks);
+  window.addEventListener("load", runAllResizeTasks);
 
-  // Ejecutar al redimensionar (por si giran el celular)
+  // Ejecutar al redimensionar (con debounce para rendimiento)
   let resizeTimer: number | undefined;
+
   window.addEventListener("resize", () => {
     clearTimeout(resizeTimer);
-    resizeTimer = window.setTimeout(syncResizeContainers, 100);
+    resizeTimer = window.setTimeout(runAllResizeTasks, 100);
   });
 </script>
 
@@ -450,7 +498,7 @@ import "../styles/global.css";
     width: 100%;
     font-weight: 600;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-between;
     gap: 0.75rem;
 
@@ -494,7 +542,7 @@ import "../styles/global.css";
   .menu-link,
   .menu-link-btn {
     cursor: pointer;
-    color: var(--blanco-total);
+    color: var(--cyan-neon);
     font-weight: 400;
     transition: color 0.3s ease-in-out;
     text-decoration: none;
@@ -552,6 +600,19 @@ import "../styles/global.css";
     backdrop-filter: blur(12px);
   }
 
+  @media (width >= 640px) {
+    .stats-box > div {
+      position: static !important;
+      width: 100% !important;
+    }
+  }
+
+  @media (width >= 768px) {
+    #arrowLeft {
+      margin-left: 0 !important;
+    }
+  }
+
   /*
 		DESKTOP STYLES
 	*/
@@ -588,6 +649,9 @@ import "../styles/global.css";
 
       /* 3. El estándar para Chrome, Edge, Firefox */
       backdrop-filter: blur(0px);
+    }
+    .user-menu-row {
+      flex-direction: row;
     }
   }
 </style>

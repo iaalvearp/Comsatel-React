@@ -8,7 +8,7 @@ export default function SubscriptionSection() {
   const [notifications, setNotifications] = useState([
     {
       id: 1,
-      text: "Notificación 001 - 000",
+      text: "Alerta 001 - 000",
       modalTitle:
         "Conexión por cable débil. La velocidad de internet puede ser más lenta de lo esperado.",
       modalText:
@@ -16,14 +16,14 @@ export default function SubscriptionSection() {
     },
     {
       id: 2,
-      text: "Notificación 002 - 000 - 000",
+      text: "Alerta 002 - 000 - 000",
       modalTitle: "Actualización disponible",
       modalText:
         "Hay una nueva versión de firmware disponible para su dispositivo. Se recomienda instalarla para mejorar la estabilidad de la conexión.",
     },
   ]);
 
-  // Estado para controlar qué notificación se está viendo
+  // Estado para controlar qué Alerta se está viendo
   const [selectedNote, setSelectedNote] = useState<any>(null);
 
   const removeNotification = (id: number) => {
@@ -98,7 +98,7 @@ export default function SubscriptionSection() {
             </div>
             <div className="text-center sm:text-right gap-2">
               <label className="text-[var(--blanco-08)] text-xs tracking-widest uppercase font-semibold">
-                Notificaciones
+                Alertas
               </label>
 
               {/* LISTA DE NOTIFICACIONES */}
@@ -272,7 +272,7 @@ export default function SubscriptionSection() {
         </div>
       )}
 
-      {/* 3. MODAL DE NOTIFICACIÓN (CORREGIDO: DENTRO DEL RETURN) */}
+      {/* 3. MODAL DE Alerta (CORREGIDO: DENTRO DEL RETURN) */}
       {selectedNote && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[var(--blanco-004)] backdrop-blur-sm animate-in fade-in duration-300">
           {/* Contenedor del Modal */}
