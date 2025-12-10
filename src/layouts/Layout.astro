@@ -591,13 +591,13 @@ import "../styles/global.css";
   }
   .glass-effect {
     /* 1. El color base: Blanco al 40% de opacidad */
-    background-color: rgba(22, 33, 62, 0.4);
-
-    /* 2. El truco para SAFARI (iOS/macOS) */
-    -webkit-backdrop-filter: blur(12px) !important;
+    background: rgb(22 33 62 / 90%);
 
     /* 3. El estándar para Chrome, Edge, Firefox */
     backdrop-filter: blur(12px);
+
+    /* 2. El truco para SAFARI (iOS/macOS) */
+    -webkit-backdrop-filter: blur(12px);
   }
 
   @media (width >= 640px) {

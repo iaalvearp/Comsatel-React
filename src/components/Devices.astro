@@ -3,9 +3,9 @@ import DevicesList from "./starlink/DevicesList";
 ---
 
 <section
-  class="resize-content relative w-full flex justify-center mt-[9.5rem] mb-24 px-[5%] box-border"
+  class="relative w-full flex justify-center mt-[9.5rem] mb-24 box-border overflow-x-scroll"
 >
-  <main class="w-full sm:ml-28">
+  <main class="resize-content w-full sm:ml-28">
     <div class="stats-box relative">
       <div
         class="w-full flex items-center justify-between fixed bg-[var(--azul-primario-096)] border border-[var(--blanco-06)] rounded-xl px-2 md:px-4 py-3 md:py-6 box-border like-header"
@@ -14,7 +14,7 @@ import DevicesList from "./starlink/DevicesList";
           Suscripciones: <span class="text-[var(--estado-activo)]"
             >7 Activas</span
           >
-
+          <br class="block sm:hidden" />
           <span class="text-[var(--estado-finalizando)]">1 Finalizando</span>
           <span class="text-[var(--estado-inactivo)]">1 Inactiva</span>
         </div>
