@@ -12,7 +12,7 @@ export default function Header() {
                     <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-cyan-400">
                         <User size={16} />
                     </div>
-                    <span className="text-sm text-slate-300 font-medium pr-2">Kevin Briones</span>
+                    <span className="text-sm text-slate-300 font-medium pr-2">Juán Pérez</span>
                 </div>
             </div>
         </header>
