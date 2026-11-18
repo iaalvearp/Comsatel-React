@@ -1,5 +1,5 @@
 ---
-
+import { DEMO_USUARIO, DEMO_CLAVE } from "../config/demo";
 ---
 
 <main class="login-wrapper">
@@ -15,7 +15,14 @@
 
     <form id="loginForm" class="login-form" action="pages/dashboard.html">
       <div class="input-group">
-        <input type="text" id="user" name="user" placeholder=" " required />
+        <input
+          type="text"
+          id="user"
+          name="user"
+          value={DEMO_USUARIO}
+          placeholder=" "
+          required
+        />
         <label for="user">Usuario/Correo</label>
       </div>
 
@@ -24,6 +31,7 @@
           type="password"
           id="password"
           name="password"
+          value={DEMO_CLAVE}
           placeholder=" "
           required
         />
@@ -33,28 +41,44 @@
       <button type="submit" class="btn-primary">Ingresar</button>
     </form>
 
+    <p id="login-error" class="text-red-600 text-sm mt-2 hidden">Usuario o contraseña incorrectos. Usa el usuario de demostración.</p>
+    <p class="demo-hint">Demo: el usuario y la contraseña ya están completos. Solo toca iniciar sesión.</p>
+
     <a href="/recover_password" class="forgot-password"
       >¡Olvidé mi contraseña!</a
     >
   </section>
 </main>
 
-<script>
-  // 1. Seleccionamos el formulario
-  const form = document.getElementById("loginForm") as HTMLFormElement | null;
+<script define:vars={{ DEMO_USUARIO, DEMO_CLAVE }}>
+  // Sesión persistente: si ya entramos antes, ir directo a servicios
+  if (localStorage.getItem("usuarioLogueado") === "true") {
+    window.location.href = "/services";
+  }
 
-  if (form instanceof HTMLFormElement) {
+  const form = document.getElementById("loginForm");
+  const userInput = document.getElementById("user");
+  const passwordInput = document.getElementById("password");
+  const errorMsg = document.getElementById("login-error");
+
+  if (
+    form instanceof HTMLFormElement &&
+    userInput instanceof HTMLInputElement &&
+    passwordInput instanceof HTMLInputElement
+  ) {
     form.addEventListener("submit", async (e) => {
       // IMPORTANTE: Esto evita que la página se recargue sola
       e.preventDefault();
 
-      // Aquí capturamos los datos que escribió el usuario
-      const formData = new FormData(form);
-      const datos = Object.fromEntries(formData);
+      const usuario = userInput.value.trim();
+      const clave = passwordInput.value;
 
-      console.log("Intentando loguear con:", datos);
+      if (usuario !== DEMO_USUARIO || clave !== DEMO_CLAVE) {
+        errorMsg?.classList.remove("hidden");
+        return;
+      }
 
-      // Enrutamiento de mentira
+      errorMsg?.classList.add("hidden");
 
       // Simulamos una pequeña espera para que parezca real (opcional)
       await new Promise((r) => setTimeout(r, 1000));
@@ -229,6 +253,14 @@
 
   .btn-primary:hover {
     background-color: var(--cyan-hover);
+  }
+
+  .demo-hint {
+    margin-top: 10px;
+    color: var(--blanco-08);
+    font-size: 0.75rem;
+    line-height: 1.3;
+    text-align: center;
   }
 
   /* Link Olvidé contraseña */
